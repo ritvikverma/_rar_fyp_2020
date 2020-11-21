@@ -1,0 +1,229 @@
+{
+  "total": {
+    "Line": "KTL",
+    "No. of trip(s) cancelled": "0",
+    "No. of train(s) withdrawn": "0",
+    "No. of train(s) cancelled": "0",
+    "No. of train(s) changed over": "1"
+  },
+  "events": [
+    {
+      "event_descriptions": [
+        {
+          "Item": "1-1",
+          "Event Time": "24/11/19 08:08",
+          "Location": "KTL   SKM   --",
+          "Train No": "",
+          "Equipment/ Consist": "Lift L1",
+          "URN": "2019-053688",
+          "Parent URN": "2019-053688",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "SM",
+      "Fault Description": "Lift Defect",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "2-1",
+          "Event Time": "24/11/19 08:48",
+          "Location": "KTL   HOM Concourse -- HOM PlantRm",
+          "Train No": "",
+          "Equipment/ Consist": "",
+          "URN": "2019-053691",
+          "Parent URN": "2019-053691",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "PUB",
+      "Fault Description": "Escalator  Accident",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "3-1",
+          "Event Time": "24/11/19 11:56",
+          "Location": "KTL   WTS Platform -- WTS Concourse",
+          "Train No": "",
+          "Equipment/ Consist": "Escalator E2",
+          "URN": "2019-053709",
+          "Parent URN": "2019-053709",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "PUB",
+      "Fault Description": "Escalator Accident",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "4-1",
+          "Event Time": "24/11/19 11:12",
+          "Location": "KTL UT HOM   -- YMT",
+          "Train No": "27",
+          "Equipment/ Consist": "PAD 3A & 4B / B861",
+          "URN": "2019-053713",
+          "Parent URN": "2019-053713",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "PUB",
+      "Fault Description": "PAD operated - sick person",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "5-1",
+          "Event Time": "24/11/19 16:27",
+          "Location": "KTL UT SKM   --",
+          "Train No": "10",
+          "Equipment/ Consist": "C363 D3B",
+          "URN": "2019-053734",
+          "Parent URN": "2019-053734",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "RS",
+      "Fault Description": "Abnormal Noise on Train Door",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "1"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "6-1",
+          "Event Time": "24/11/19 21:05",
+          "Location": "KTL BT KBD   -- TIK",
+          "Train No": "92",
+          "Equipment/ Consist": "A367/368",
+          "URN": "2019-053749",
+          "Parent URN": "2019-053749",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "RS",
+      "Fault Description": "Test run for SACEM",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "7-1",
+          "Event Time": "24/11/19 23:00",
+          "Location": "KTL BT     --",
+          "Train No": "",
+          "Equipment/ Consist": "",
+          "URN": "2019-053760",
+          "Parent URN": "2019-053760",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "EXT",
+      "Fault Description": "Shortening of Service Hour",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "8-1",
+          "Event Time": "24/11/19 23:04",
+          "Location": "KTL DT KOB   -- CHH",
+          "Train No": "12",
+          "Equipment/ Consist": "PAD 1A of C226",
+          "URN": "2019-053766",
+          "Parent URN": "2019-053766",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        },
+        {
+          "Item": "8-2",
+          "Event Time": "24/11/19 23:05",
+          "Location": "KTL DT CHH   --",
+          "Train No": "12",
+          "Equipment/ Consist": "PAD 1A of C226",
+          "URN": "2019-053766",
+          "Parent URN": "2019-053766",
+          "Init.": "1",
+          "Acc.": "0",
+          "Total": "0"
+        },
+        {
+          "Item": "8-3",
+          "Event Time": "24/11/19 23:35",
+          "Location": "KTL UT TIK   --",
+          "Train No": "01",
+          "Equipment/ Consist": "",
+          "URN": "2019-053766",
+          "Parent URN": "2019-053766",
+          "Init.": "0",
+          "Acc.": "3",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "PUB",
+      "Fault Description": "PAD Operated for Own Sick Person",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    }
+  ],
+  "traffic_controllers": {
+    "Early": [
+      "YL Wong",
+      "Franki Choi"
+    ],
+    "Mid": [
+      "",
+      ""
+    ],
+    "Late": [
+      "CK Ling",
+      "Zero Ling"
+    ],
+    "Night": [
+      "Herman Tsang",
+      "Barry Leung"
+    ]
+  }
+}

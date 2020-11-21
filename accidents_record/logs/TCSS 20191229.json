@@ -1,0 +1,217 @@
+{
+  "total": {
+    "Line": "KTL",
+    "No. of trip(s) cancelled": "1",
+    "No. of train(s) withdrawn": "0",
+    "No. of train(s) cancelled": "1",
+    "No. of train(s) changed over": "0"
+  },
+  "events": [
+    {
+      "event_descriptions": [
+        {
+          "Item": "1-1",
+          "Event Time": "29/12/19 05:00",
+          "Location": "KTL       --",
+          "Train No": "",
+          "Equipment/ Consist": "",
+          "URN": "2019-058970",
+          "Parent URN": "2019-058970",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "TBD",
+      "Fault Description": "Traction Current Early Switched On for POE Track Check",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "2-1",
+          "Event Time": "29/12/19 13:04",
+          "Location": "KTL UT WHA   --",
+          "Train No": "17",
+          "Equipment/ Consist": "A229, #D2B",
+          "URN": "2019-059022",
+          "Parent URN": "2019-059022",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "PUB",
+      "Fault Description": "Nipped by Train Doors",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "3-1",
+          "Event Time": "29/12/19 14:13",
+          "Location": "KTL UT PRE   --",
+          "Train No": "13",
+          "Equipment/ Consist": "",
+          "URN": "2019-059026",
+          "Parent URN": "2019-059026",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "PSD",
+      "Fault Description": "ESS operated due to GHD activated",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "4-1",
+          "Event Time": "29/12/19 16:20",
+          "Location": "KTL DT TIK   --",
+          "Train No": "25",
+          "Equipment/ Consist": "A244",
+          "URN": "2019-059035",
+          "Parent URN": "2019-059035",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "RS",
+      "Fault Description": "Cab to saloon door opened",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "5-1",
+          "Event Time": "29/12/19 17:28",
+          "Location": "KTL UT NTK   --",
+          "Train No": "30",
+          "Equipment/ Consist": "A216",
+          "URN": "2019-059044",
+          "Parent URN": "2019-059044",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        },
+        {
+          "Item": "5-2",
+          "Event Time": "29/12/19 17:30",
+          "Location": "KTL UT NTK   --",
+          "Train No": "01",
+          "Equipment/ Consist": "",
+          "URN": "2019-059044",
+          "Parent URN": "2019-059044",
+          "Init.": "2",
+          "Acc.": "1",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "RS",
+      "Fault Description": "Power fault flashing",
+      "No. of trips(s) cancelled": "1",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "1",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "6-1",
+          "Event Time": "29/12/19 21:27",
+          "Location": "KTL DT KBD   -- CWD",
+          "Train No": "91",
+          "Equipment/ Consist": "A197/A230",
+          "URN": "2019-059075",
+          "Parent URN": "2019-059075",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "RS",
+      "Fault Description": "Stock transfer KBD to CWD via ADS",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "7-1",
+          "Event Time": "29/12/19 21:35",
+          "Location": "KTL BT     -- TIK SDG1",
+          "Train No": "91",
+          "Equipment/ Consist": "A171/A216",
+          "URN": "2019-059077",
+          "Parent URN": "2019-059077",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "RS",
+      "Fault Description": "Main line test run for power fault",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "8-1",
+          "Event Time": "29/12/19 22:40",
+          "Location": "KTL UT KBD   -- TKD",
+          "Train No": "5",
+          "Equipment/ Consist": "A235/A228",
+          "URN": "2019-059080",
+          "Parent URN": "2019-059080",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "RS",
+      "Fault Description": "Stock transfer KBD to TKD",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    }
+  ],
+  "traffic_controllers": {
+    "Early": [
+      "Zero Ling",
+      "Edwin Tsang"
+    ],
+    "Mid": [
+      "",
+      ""
+    ],
+    "Late": [
+      "Jacky Cheung",
+      "KS Tong"
+    ],
+    "Night": [
+      "YL Wong",
+      "Franki Choi"
+    ]
+  }
+}

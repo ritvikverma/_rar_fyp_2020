@@ -1,0 +1,419 @@
+{
+  "total": {
+    "Line": "KTL",
+    "No. of trip(s) cancelled": "0",
+    "No. of train(s) withdrawn": "0",
+    "No. of train(s) cancelled": "0",
+    "No. of train(s) changed over": "0"
+  },
+  "events": [
+    {
+      "event_descriptions": [
+        {
+          "Item": "1-1",
+          "Event Time": "04/12/19 05:10",
+          "Location": "KTL BT     --",
+          "Train No": "",
+          "Equipment/ Consist": "",
+          "URN": "2019-055165",
+          "Parent URN": "2019-055165",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "TBD",
+      "Fault Description": "Early switch on traction current",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "2-1",
+          "Event Time": "04/12/19 06:18",
+          "Location": "KTL UT KWT   --",
+          "Train No": "",
+          "Equipment/ Consist": "APG#107",
+          "URN": "2019-055283",
+          "Parent URN": "2019-055283",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "APG",
+      "Fault Description": "APG Kept Closed and Kept Open in peak hour",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "3-1",
+          "Event Time": "04/12/19 08:08",
+          "Location": "KTL   LAT   --",
+          "Train No": "",
+          "Equipment/ Consist": "",
+          "URN": "2019-055284",
+          "Parent URN": "2019-055284",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "PUB",
+      "Fault Description": "Passenger Injury",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "4-1",
+          "Event Time": "04/12/19 10:00",
+          "Location": "KTL   WTS   --",
+          "Train No": "",
+          "Equipment/ Consist": "",
+          "URN": "2019-055285",
+          "Parent URN": "2019-055285",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "SM",
+      "Fault Description": "Entrance Closure",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "5-1",
+          "Event Time": "04/12/19 11:27",
+          "Location": "KTL   KBD   -- TKD",
+          "Train No": "97",
+          "Equipment/ Consist": "A199/176",
+          "URN": "2019-055286",
+          "Parent URN": "2019-055286",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "RS",
+      "Fault Description": "8 cars EMU stock transfer",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "6-1",
+          "Event Time": "04/12/19 18:41",
+          "Location": "KTL UT MOK   --",
+          "Train No": "46",
+          "Equipment/ Consist": "PSD #323",
+          "URN": "2019-055287",
+          "Parent URN": "2019-055287",
+          "Init.": "1",
+          "Acc.": "0",
+          "Total": "0"
+        },
+        {
+          "Item": "6-2",
+          "Event Time": "04/12/19 18:48",
+          "Location": "KTL UT NTK   --",
+          "Train No": "44",
+          "Equipment/ Consist": "GHD #128",
+          "URN": "2019-055287",
+          "Parent URN": "2019-055287",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        },
+        {
+          "Item": "6-3",
+          "Event Time": "04/12/19 19:03",
+          "Location": "KTL UT TIK   --",
+          "Train No": "18",
+          "Equipment/ Consist": "",
+          "URN": "2019-055287",
+          "Parent URN": "2019-055287",
+          "Init.": "0",
+          "Acc.": "2",
+          "Total": "18"
+        }
+      ],
+      "Allocation": "PSD/PUB",
+      "Fault Description": "Multiple Incidents",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "7-1",
+          "Event Time": "04/12/19 08:43",
+          "Location": "KTL DT NTK   --",
+          "Train No": "",
+          "Equipment/ Consist": "APG #207",
+          "URN": "2019-055288",
+          "Parent URN": "2019-055288",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "APG",
+      "Fault Description": "APG failed to open",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "8-1",
+          "Event Time": "04/12/19 09:08",
+          "Location": "KTL UT MOK   --",
+          "Train No": "03",
+          "Equipment/ Consist": "A364",
+          "URN": "2019-055289",
+          "Parent URN": "2019-055289",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "RS",
+      "Fault Description": "In Cab CCTV Failure",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "9-1",
+          "Event Time": "04/12/19 13:00",
+          "Location": "KTL       --",
+          "Train No": "91",
+          "Equipment/ Consist": "",
+          "URN": "2019-055290",
+          "Parent URN": "2019-055290",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "RS",
+      "Fault Description": "Stock Transfer",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "10-1",
+          "Event Time": "04/12/19 17:06",
+          "Location": "KTL UT NTK   --",
+          "Train No": "11",
+          "Equipment/ Consist": "B422",
+          "URN": "2019-055291",
+          "Parent URN": "2019-055291",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "RS",
+      "Fault Description": "TIS prompt compressor stopped",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "11-1",
+          "Event Time": "04/12/19 17:27",
+          "Location": "KTL DT KWT   --",
+          "Train No": "",
+          "Equipment/ Consist": "PEP 2.2",
+          "URN": "2019-055292",
+          "Parent URN": "2019-055292",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        },
+        {
+          "Item": "11-2",
+          "Event Time": "04/12/19 17:28",
+          "Location": "KTL DT KWT   --",
+          "Train No": "40",
+          "Equipment/ Consist": "",
+          "URN": "2019-055292",
+          "Parent URN": "2019-055292",
+          "Init.": "1",
+          "Acc.": "0",
+          "Total": "0"
+        },
+        {
+          "Item": "11-3",
+          "Event Time": "04/12/19 18:17",
+          "Location": "KTL DT HOM   --",
+          "Train No": "44",
+          "Equipment/ Consist": "",
+          "URN": "2019-055292",
+          "Parent URN": "2019-055292",
+          "Init.": "0",
+          "Acc.": "2",
+          "Total": "4"
+        }
+      ],
+      "Allocation": "PUB",
+      "Fault Description": "PEP Operated for Sick Person",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "12-1",
+          "Event Time": "04/12/19 20:15",
+          "Location": "KTL UT MOK   --",
+          "Train No": "07",
+          "Equipment/ Consist": "PAD 2B of A383",
+          "URN": "2019-055293",
+          "Parent URN": "2019-055293",
+          "Init.": "2",
+          "Acc.": "0",
+          "Total": "0"
+        },
+        {
+          "Item": "12-2",
+          "Event Time": "04/12/19 20:32",
+          "Location": "KTL UT CHH   --",
+          "Train No": "08",
+          "Equipment/ Consist": "A362",
+          "URN": "2019-055293",
+          "Parent URN": "2019-055293",
+          "Init.": "0",
+          "Acc.": "4",
+          "Total": "6"
+        }
+      ],
+      "Allocation": "RS/PUB",
+      "Fault Description": "Multiple Incidents",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "13-1",
+          "Event Time": "04/12/19 18:28",
+          "Location": "KTL DT NTK   --",
+          "Train No": "45",
+          "Equipment/ Consist": "A245",
+          "URN": "2019-055294",
+          "Parent URN": "2019-055294",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "RS",
+      "Fault Description": "DVAS Fault",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "14-1",
+          "Event Time": "05/12/19 01:28",
+          "Location": "KTL BT TIK   -- YAT",
+          "Train No": "",
+          "Equipment/ Consist": "",
+          "URN": "2019-055299",
+          "Parent URN": "2019-055299",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "EXT",
+      "Fault Description": "CEDD blasting work",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    },
+    {
+      "event_descriptions": [
+        {
+          "Item": "15-1",
+          "Event Time": "04/12/19 23:20",
+          "Location": "KTL   KBD   --",
+          "Train No": "",
+          "Equipment/ Consist": "",
+          "URN": "2019-055298",
+          "Parent URN": "2019-055298",
+          "Init.": "0",
+          "Acc.": "0",
+          "Total": "0"
+        }
+      ],
+      "Allocation": "TBD",
+      "Fault Description": "Traffic Accident at KBD",
+      "No. of trips(s) cancelled": "-",
+      "No. of train(s) withdrawn": "-",
+      "No. of train(s) cancelled": "-",
+      "No. of train(s) changed over": "-"
+    }
+  ],
+  "traffic_controllers": {
+    "Early": [
+      "PM Au",
+      "CK Ling"
+    ],
+    "Mid": [
+      "",
+      ""
+    ],
+    "Late": [
+      "",
+      ""
+    ],
+    "Night": [
+      "",
+      ""
+    ]
+  }
+}
