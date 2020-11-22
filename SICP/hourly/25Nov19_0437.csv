@@ -1,0 +1,4 @@
+act_arr_time,station,track,train,act_dep_time,act_occupied_time,act_travelling_time,stop
+2019-11-25 04:06:53.713,DIH,03,ET83,2019-11-25 04:11:09.904,256.191,225,False
+2019-11-25 04:07:34.552,CHH,11,KT85,,,,True
+2019-11-25 04:10:39.424,DIH,05,ET83,,,,True

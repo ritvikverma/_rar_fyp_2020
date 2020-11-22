@@ -1,0 +1,4 @@
+act_arr_time,station,track,train,act_dep_time,act_occupied_time,act_travelling_time,stop
+2019-12-06 04:26:54.579,KOB,11,HT86,2019-12-06 04:28:08.081,73.502,53,False
+2019-12-06 04:27:14.702,CHH,03,KT85,,,,False
+2019-12-06 04:27:47.766,KOB,09,HT86,,,,True

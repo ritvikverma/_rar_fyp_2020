@@ -1,0 +1,5 @@
+act_arr_time,station,track,train,act_dep_time,act_occupied_time,act_travelling_time,stop
+2019-11-15 01:40:53.111,DIH,01,BT84,2019-11-15 01:41:47.697,54.586,36,False
+2019-11-15 01:41:29.568,WTS,11,BT84,,,52,False
+2019-11-15 01:42:22.162,WTS,09,BT84,,,295,False
+2019-11-15 01:47:17.203,WTS,07,BT84,,,,False
