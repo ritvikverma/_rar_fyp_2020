@@ -1,0 +1,7 @@
+act_arr_time,station,track,train,act_dep_time,act_occupied_time,act_travelling_time,stop
+2019-11-23 03:54:48.646,KWT,6016,GT87,2019-11-23 03:55:47.813,59.167,48,False
+2019-11-23 03:55:36.657,LAT,6102,GT87,2019-11-23 03:56:03.352,26.695,17,False
+2019-11-23 03:55:54.388,LAT,6104,GT87,,,31,True
+2019-11-23 03:56:26.263,LAT,6106,GT87,,,,False
+2019-11-23 04:34:36.069,LAT,6106,HT87,,,,False
+2019-11-23 04:35:06.549,DIH,03,KT86,,,,False
