@@ -1,34 +1,22 @@
 from datetime import timedelta
+import sys
 import pandas as pd
 import json
 import os
 import sys
+from pathlib import Path
 
-# import Utils.csv_to_json_file_name as csv_to_json
-# from _rar_fyp_2020.Utils.csv_to_json_file_name import csv_to_json_file_name as csv_to_json
+sys.path.append(str(Path(".").absolute().parent))
+from Utils import fn_csv_file_name_to_json_file_name
 
 # URI for the files
-relative_uri_SICP = os.path.join("SICP", "daily")
-relative_uri_accidents_records = os.path.join("accidents_record", "logs", "TCSS ")
+relative_uri_SICP = os.path.join("..", "SICP", "daily")
+relative_uri_accidents_records = os.path.join("..", "accidents_record", "logs", "TCSS ")
 relative_uri_json = ""
 quantile = 0.95
-time_range = 0
-column_name_added = "incident_0"
-
-
-def fn_csv_file_name_to_json_file_name(dir_name):
-    date = dir_name[0:2]
-    month = dir_name[2:5].lower()
-    year = "20" + dir_name[5:7]
-    extension = ".json"
-    if month == "nov":
-        month = "11"
-    elif month == "dec":
-        month = "12"
-    else:
-        return None
-    return year + month + date + extension
-
+time_range_minutes = 1
+time_range_seconds = 0
+column_name_added = "incident_0_time_95_quantile"
 
 def fn_read_csv(relative_uri):
     dataframe = pd.read_csv(relative_uri)
@@ -77,8 +65,12 @@ def fn_detect_incidents(relative_uri_csv, relative_uri_json):
                         train_number = desc["Train No"]
 
                         event_time = fn_format_date(desc["Event Time"])
-                        start_date = event_time - timedelta(minutes=time_range)
-                        end_date = event_time + timedelta(minutes=time_range)
+                        start_date = event_time - timedelta(
+                            minutes=time_range_minutes, seconds=time_range_seconds
+                        )
+                        end_date = event_time + timedelta(
+                            minutes=time_range_minutes, seconds=time_range_seconds
+                        )
 
                         date_mask = fn_date_mask(
                             dataframe, "act_arr_time", start_date, end_date
