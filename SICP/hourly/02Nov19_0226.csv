@@ -1,0 +1,5 @@
+act_arr_time,station,track,train,act_dep_time,act_occupied_time,act_travelling_time,stop
+2019-11-02 01:34:10.904,DIH,01,KS87,2019-11-02 01:36:30.157,139.253,130,False
+2019-11-02 01:36:21.192,WTS,11,KS87,2019-11-02 01:37:01.634,40.442,29,False
+2019-11-02 01:36:50.876,WTS,09,KS87,2019-11-02 01:37:43.071,52.195,33,False
+2019-11-02 01:37:23.946,WTS,07,KS87,,,,False

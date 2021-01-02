@@ -1,0 +1,7 @@
+act_arr_time,station,track,train,act_dep_time,act_occupied_time,act_travelling_time,stop
+2019-12-05 01:49:38.288,YMT,40,NT87,,,850,True
+2019-12-05 02:00:41.880,DIH,01,BT83,2019-12-05 02:01:33.036,51.156,38,False
+2019-12-05 02:01:19.930,WTS,11,BT83,,,,False
+2019-12-05 02:03:48.546,YMT,34,NT87,,,,False
+2019-12-05 02:41:42.808,CHH,08,JT88,,,165,False
+2019-12-05 02:44:28.557,CHH,36,JT88,,,,False

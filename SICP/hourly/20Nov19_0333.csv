@@ -1,0 +1,3 @@
+act_arr_time,station,track,train,act_dep_time,act_occupied_time,act_travelling_time,stop
+2019-11-20 02:33:53.524,KWT,6015,FT89,2019-11-20 03:13:01.055,2347.531,2312,False
+2019-11-20 03:12:25.784,LAT,6101,FT89,,,,False
