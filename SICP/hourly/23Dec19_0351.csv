@@ -1,6 +1,0 @@
-act_arr_time,station,track,train,act_dep_time,act_occupied_time,act_travelling_time,stop
-2019-12-23 03:00:29.010,DIH,01,KT87,,,2366,False
-2019-12-23 03:28:49.926,CHH,08,KT88,2019-12-23 03:29:29.371,39.445,31,False
-2019-12-23 03:29:21.203,CHH,10,KT88,,,,True
-2019-12-23 03:39:55.909,DIH,03,KT87,2019-12-23 03:51:10.260,674.351,687,False
-2019-12-23 03:51:23.209,WTS,11,KT87,,,,False

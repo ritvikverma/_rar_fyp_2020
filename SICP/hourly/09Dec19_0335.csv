@@ -1,3 +1,0 @@
-act_arr_time,station,track,train,act_dep_time,act_occupied_time,act_travelling_time,stop
-2019-12-09 02:52:43.214,YAT,7009,KT84,2019-12-09 03:15:18.683,1355.469,1008,False
-2019-12-09 03:09:32.047,TIK,7101,KT84,,,,False

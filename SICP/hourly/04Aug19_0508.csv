@@ -1,3 +1,0 @@
-act_arr_time,station,track,train,act_dep_time,act_occupied_time,act_travelling_time,stop
-2019-08-04 05:01:23.437,DIH,03,KT86,,,,False
-2019-08-04 05:01:35.191,HOM,11,ET85,,,,True

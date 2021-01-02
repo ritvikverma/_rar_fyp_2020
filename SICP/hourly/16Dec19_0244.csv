@@ -1,6 +1,0 @@
-act_arr_time,station,track,train,act_dep_time,act_occupied_time,act_travelling_time,stop
-2019-12-16 02:01:51.987,DIH,01,BT81,2019-12-16 02:02:35.812,43.825,31,False
-2019-12-16 02:02:23.661,WTS,11,BT81,,,52,False
-2019-12-16 02:03:16.649,WTS,09,BT81,,,,False
-2019-12-16 02:14:38.147,KOB,10,FT83,,,418,True
-2019-12-16 02:21:36.891,KOB,06,FT83,,,,False

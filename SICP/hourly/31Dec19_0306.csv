@@ -1,5 +1,0 @@
-act_arr_time,station,track,train,act_dep_time,act_occupied_time,act_travelling_time,stop
-2019-12-31 02:07:52.317,LAT,6104,HS66,,,1387,True
-2019-12-31 02:09:20.728,TIK,7122,HS68,,,1311,False
-2019-12-31 02:30:59.993,LAT,6104,HS66,,,,True
-2019-12-31 02:31:11.946,TIK,7122,HS68,,,,False
