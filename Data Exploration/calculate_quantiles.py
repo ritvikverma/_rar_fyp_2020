@@ -14,16 +14,14 @@ quantile_column = "act_occupied_time"
 for dir_name in os.listdir(relative_uri_SICP):
     relative_uri_csv = relative_uri_SICP + "/" + dir_name
     dataframe = pd.read_csv(relative_uri_csv)
-    for index, row in dataframe.iterrows():
+    for index, _ in dataframe.iterrows():
         track_no = dataframe.loc[[index], "track"].values[0]
         station = dataframe.loc[[index], "station"].values[0]
         track_station_pair = str(track_no) + "-" + str(station)
         if track_station_pair not in quantile_per_track:
             quantile_per_track[track_station_pair] = []
         quantile_per_track[track_station_pair].append(
-            dataframe.loc[
-                (dataframe["track"] == track_no) & (dataframe["station"] == station)
-            ][quantile_column]
+            dataframe.loc[[index], quantile_column].values[0]
         )
 
 for key in quantile_per_track:
