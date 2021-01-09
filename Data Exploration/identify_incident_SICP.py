@@ -1,8 +1,10 @@
 from datetime import timedelta
+import sys
 import pandas as pd
 import json
 import os
 import sys
+from pathlib import Path
 
 # import Utils.csv_to_json_file_name as csv_to_json
 # from _rar_fyp_2020.Utils.csv_to_json_file_name import csv_to_json_file_name as csv_to_json
@@ -88,7 +90,6 @@ def fn_detect_incidents(relative_uri_csv, relative_uri_json):
             for event in data["events"]:
                 for desc in event["event_descriptions"]:
                     if desc["Train No"] != "":
-                        # count+=1
 
                         train_number = desc["Train No"]
 
@@ -123,8 +124,6 @@ def fn_detect_incidents(relative_uri_csv, relative_uri_json):
 
         df_new = dataframe.take(df_indices)
         dataframe.to_csv(relative_uri_csv, index=False)
-        # print("count=",count)
-
     except os.error as e:
         print("File not found " + e.filename)
 
