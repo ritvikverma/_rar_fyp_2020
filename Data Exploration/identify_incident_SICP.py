@@ -1,10 +1,8 @@
-from datetime import timedelta
-import sys
-import pandas as pd
 import json
 import os
-import sys
-from pathlib import Path
+from datetime import timedelta
+
+import pandas as pd
 
 # import Utils.csv_to_json_file_name as csv_to_json
 # from _rar_fyp_2020.Utils.csv_to_json_file_name import csv_to_json_file_name as csv_to_json
@@ -14,7 +12,7 @@ relative_uri_SICP = os.path.join("../SICP", "daily")
 relative_uri_accidents_records = os.path.join("../accidents_record", "logs", "TCSS ")
 relative_uri_json = ""
 quantile = 0.90
-time_range =1
+time_range = 1
 column_name_added = "newinc"
 quantile_per_track={}
 
@@ -100,11 +98,7 @@ def fn_detect_incidents(relative_uri_csv, relative_uri_json):
                         date_mask = fn_date_mask(
                             dataframe, "act_arr_time", start_date, end_date
                         )
-                        quantile_mask = fn_quantile_mask(
-                            dataframe,
-                            ["act_travelling_time", "act_occupied_time"],
-                            quantile,
-                        )
+
                         name_mask = fn_name_mask(dataframe, "train", str(train_number))
 
                         query = dataframe.index[
@@ -114,8 +108,6 @@ def fn_detect_incidents(relative_uri_csv, relative_uri_json):
                         print(desc["Item"])
                         num=0
                         for index in query[0]:
-                            # print(event_time-dataframe.loc[[index,'act_arr_time']])
-                            # print(dataframe.loc[[index]])
                             if check_quantile_track(index,dataframe):
                                 num += 1
                                 df_indices.append(index)
@@ -128,21 +120,12 @@ def fn_detect_incidents(relative_uri_csv, relative_uri_json):
         print("File not found " + e.filename)
 
 
-# for 05Dec19.csv in os.listdir(relative_uri_SICP):
-#
-#     relative_uri_csv = relative_uri_SICP + "/" + dir_name
-#     json_file = fn_csv_file_name_to_json_file_name(dir_name)
-#     if json_file is not None:
-#         relative_uri_json = relative_uri_accidents_records + json_file
-#
-#     fn_detect_incidents(relative_uri_csv, relative_uri_json)
-#     print(dir_name);
+for dir_name in os.listdir(relative_uri_SICP):
 
-dir_name= "25Dec19.csv"
-relative_uri_csv = relative_uri_SICP + "/" + dir_name
-json_file = fn_csv_file_name_to_json_file_name(dir_name)
-if json_file is not None:
-    relative_uri_json = relative_uri_accidents_records + json_file
+    relative_uri_csv = relative_uri_SICP + "/" + dir_name
+    json_file = fn_csv_file_name_to_json_file_name(dir_name)
+    if json_file is not None:
+        relative_uri_json = relative_uri_accidents_records + json_file
 
-fn_detect_incidents(relative_uri_csv, relative_uri_json)
-print(dir_name);
+    fn_detect_incidents(relative_uri_csv, relative_uri_json)
+    print(dir_name)
