@@ -5,8 +5,8 @@ from datetime import timedelta
 import pandas as pd
 
 # Parameters to be edited
-column_being_checked = "act_occupied_time"
-quantile = 90
+column_being_checked = "act_travelling_time"
+quantile = 95
 time_range = 1
 
 # URI for the files
@@ -137,6 +137,7 @@ def fn_detect_incidents(relative_uri_csv, relative_uri_json):
 
 
 # Iterates through every SICP  file
+count = 0
 for dir_name in os.listdir(relative_uri_SICP):
 
     relative_uri_csv = relative_uri_SICP + "/" + dir_name
@@ -146,3 +147,6 @@ for dir_name in os.listdir(relative_uri_SICP):
 
     fn_detect_incidents(relative_uri_csv, relative_uri_json)
     print(dir_name)
+    count += 1
+
+print("Total number of files processed: " + str(count))
