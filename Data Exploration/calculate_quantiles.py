@@ -7,8 +7,7 @@ import os
 relative_uri_SICP = os.path.join("..", "SICP", "daily")
 relative_uri_json = ""
 quantile_per_station_track = {}
-quantile = 0.90
-output_file = "act_occupied_time_quantile.json"
+quantiles = [0.90, 0.95]
 quantile_column = "act_occupied_time"
 
 
@@ -35,10 +34,11 @@ for dir_name in os.listdir(relative_uri_SICP):
             quantile_column
         ][i]
 
-for key in quantile_per_station_track:
-    quantile_per_station_track[key] = np.nanquantile(
-        quantile_per_station_track[key], quantile
-    )
-
-with open(output_file, "w") as file:
-    json.dump(quantile_per_station_track, file)
+for quantile in quantiles:
+    tmp = {}
+    for key in quantile_per_station_track:
+        tmp[key] = np.nanquantile(quantile_per_station_track[key], quantile)
+    output_file = f"Quantiles/act_occupied_time_quantile_{quantile}.json"
+    with open(output_file, "w") as file:
+        tmp["CHH-23A"] = None
+        json.dump(tmp, file)
