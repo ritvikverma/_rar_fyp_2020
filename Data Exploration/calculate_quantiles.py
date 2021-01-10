@@ -1,7 +1,8 @@
 import json
+import os
+
 import numpy as np
 import pandas as pd
-import os
 
 # URI for the files
 relative_uri_SICP = os.path.join("..", "SICP", "daily")
@@ -20,7 +21,7 @@ def fn_get_group_by_list(dataframe):
     keys = [key_station[i] + "-" + key_track[i] for i in range(len(key_station))]
     ukeys, index = np.unique(keys, True)
     arrays = np.split(values, index[1:])
-    return {"station-track": ukeys, "act_occupied_time": [list(a) for a in arrays]}
+    return {"station-track": ukeys, quantile_column: [list(a) for a in arrays]}
 
 
 for dir_name in os.listdir(relative_uri_SICP):
@@ -38,7 +39,7 @@ for quantile in quantiles:
     tmp = {}
     for key in quantile_per_station_track:
         tmp[key] = np.nanquantile(quantile_per_station_track[key], quantile)
-    output_file = f"Quantiles/act_occupied_time_quantile_{quantile}.json"
+    output_file = f"Quantiles/{quantile_column}_quantile_{quantile * 100}.json"
     with open(output_file, "w") as file:
         tmp["CHH-23A"] = None
         json.dump(tmp, file)
