@@ -6,7 +6,7 @@ import pandas as pd
 
 # Parameters to be edited
 column_being_checked = "act_travelling_time"
-quantile = 95
+quantile = 85
 time_range = 1
 
 # URI for the files
@@ -96,8 +96,8 @@ def check_quantile_track(index, dataframe):
         if dataframe.loc[[index], column_being_checked].values[0] >= quantile_per_track[track_station_pair]:
             return True
     except:
-        return False, 0
-    return False, 0
+        return False
+    return False
 
 
 # Detects the incidents for the passed file
@@ -130,6 +130,8 @@ def fn_detect_incidents(relative_uri_csv, relative_uri_json):
                         for index in query[0]:
                             if check_quantile_track(index, dataframe):
                                 dataframe.at[index, column_name_added] = True
+                            else:
+                                dataframe.at[index, column_name_added] = False
 
         dataframe.to_csv(relative_uri_csv, index=False)
     except os.error as e:
