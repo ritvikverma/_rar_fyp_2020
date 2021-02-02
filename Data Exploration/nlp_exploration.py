@@ -25,7 +25,7 @@ def preprocess(description):
 
 def get_count_data(text_descriptions):
     returnable = list(map(preprocess, text_descriptions))
-    returnable = {" ".join(set(k)): v for k, v in Counter(returnable).items()}
+    returnable = {" ".join(k): v for k, v in Counter(returnable).items()}
     return returnable
 
 
