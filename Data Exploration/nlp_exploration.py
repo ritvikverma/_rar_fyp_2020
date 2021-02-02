@@ -43,5 +43,5 @@ if __name__ == '__main__':
     repeated_dict = get_count_data(text_descriptions)
     repeated_dict = dict(sorted(repeated_dict.items(), key=lambda x: x[1]))
     print(len(repeated_dict))
-    # for k, v in reversed(repeated_dict.items()):
-    #     print(v, k)
+    for k, v in reversed(repeated_dict.items()):
+        print(v, k)
