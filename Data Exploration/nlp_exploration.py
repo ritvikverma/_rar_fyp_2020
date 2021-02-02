@@ -1,5 +1,6 @@
 import json
 import os
+import string
 from collections import Counter
 
 relative_uri_accidents_records = os.path.join("../accidents_record", "logs")
@@ -13,10 +14,19 @@ def populate_accidents_dict():
             accident_jsons[accident_json_name.split('.')[0].split()[1]] = retrieved_json['events']
 
 
-def get_repeated_data(text_descriptions):
-    returnable = [k for k, v in Counter(text_descriptions).items() if v > 1]
-    returnable = [description.lower() for description in returnable]
-    return list(set(returnable))
+def preprocess(description):
+    description = description.lower()
+    description = description.translate(str.maketrans(
+        "", "", string.punctuation))
+    description = description.strip()
+    description = tuple(description.split())
+    return description
+
+
+def get_count_data(text_descriptions):
+    returnable = list(map(preprocess, text_descriptions))
+    returnable = {" ".join(set(k)): v for k, v in Counter(returnable).items()}
+    return returnable
 
 
 if __name__ == '__main__':
@@ -30,5 +40,8 @@ if __name__ == '__main__':
                     has_train_in_any_event = True
             if has_train_in_any_event:
                 text_descriptions.append(event["Fault Description"])
-    print(len(text_descriptions))
-    print(get_repeated_data(text_descriptions))
+    repeated_dict = get_count_data(text_descriptions)
+    repeated_dict = dict(sorted(repeated_dict.items(), key=lambda x: x[1]))
+    print(len(repeated_dict))
+    # for k, v in reversed(repeated_dict.items()):
+    #     print(v, k)
