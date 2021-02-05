@@ -20,8 +20,19 @@ file_name = f"Quantiles/{column_being_checked}_quantile_{quantile}.0.json"
 f = open(file_name)
 quantile_per_track = json.load(f)
 
+# For checking with all quantiles
+all_quantiles = [95, 90, 85, 80, 75, 70]
+list_of_quant_dicts = []
+for x in all_quantiles:
+    file_name = f"Quantiles/{column_being_checked}_quantile_{x}.0.json"
+    f = open(file_name)
+    list_of_quant_dicts.append(json.load(f))
+
 # Column being added to the CSV files
-column_name_added = f"quantile_{quantile}_{column_being_checked}"
+# column_name_added = f"quantile_{quantile}_{column_being_checked}"
+column_name_added = "all_quantile"
+count_for_each = []
+total_count = []
 
 
 # Finds json incident file corresponding to the SICP file
@@ -43,7 +54,7 @@ def fn_csv_file_name_to_json_file_name(dir_name):
 def fn_read_csv(relative_uri):
     dataframe = pd.read_csv(relative_uri)
     if column_name_added not in dataframe:
-        dataframe[column_name_added] = False
+        dataframe[column_name_added] = str(False)
 
     return dataframe
 
@@ -93,8 +104,16 @@ def check_quantile_track(index, dataframe):
     #     quantile_per_track[track_station_pair]=quantile_value
     #
     try:
-        if dataframe.loc[[index], column_being_checked].values[0] >= quantile_per_track[track_station_pair]:
-            return True
+
+        for ind, value in enumerate(all_quantiles):
+            a = dataframe.loc[[index], column_being_checked].values[0]
+            b = list_of_quant_dicts[ind][track_station_pair]
+            if dataframe.loc[[index], column_being_checked].values[0] >= list_of_quant_dicts[ind][track_station_pair]:
+                return "True-" + str(value)
+                break
+
+        # if dataframe.loc[[index], column_being_checked].values[0] >= quantile_per_track[track_station_pair]:
+        #     return True
     except:
         return False
     return False
@@ -105,11 +124,16 @@ def fn_detect_incidents(relative_uri_csv, relative_uri_json):
     dataframe = fn_read_csv(relative_uri_csv)
     dataframe.to_csv(relative_uri_csv, index=False)
     try:
+        total = 0
+        num_found = 0
         with open(relative_uri_json) as json_file:
             data = json.load(json_file)
             for event in data["events"]:
                 for desc in event["event_descriptions"]:
                     if desc["Train No"] != "":
+
+                        total += 1
+                        temp = 0
 
                         train_number = desc["Train No"]
 
@@ -123,16 +147,25 @@ def fn_detect_incidents(relative_uri_csv, relative_uri_json):
 
                         name_mask = fn_name_mask(dataframe, "train", str(train_number))
 
+                        queryx = dataframe.index[
+                            name_mask
+                        ].sort_values(["act_arr_time"])
+
                         query = dataframe.index[
                             name_mask & date_mask
                             ].sort_values(["act_arr_time"])
 
                         for index in query[0]:
-                            if check_quantile_track(index, dataframe):
-                                dataframe.at[index, column_name_added] = True
+                            returned_val = check_quantile_track(index, dataframe)
+                            if returned_val != "False":
+                                temp += 1
+                                dataframe.at[index, column_name_added] = returned_val
                             else:
                                 dataframe.at[index, column_name_added] = False
-
+                        if temp != 0:
+                            num_found += 1
+        total_count.append(total)
+        count_for_each.append(num_found)
         dataframe.to_csv(relative_uri_csv, index=False)
     except os.error as e:
         print("File not found " + e.filename)
@@ -150,5 +183,12 @@ for dir_name in os.listdir(relative_uri_SICP):
     fn_detect_incidents(relative_uri_csv, relative_uri_json)
     print(dir_name)
     count += 1
+    # if count==4:
+    #     break
 
+print(total_count)
+print(count_for_each)
 print("Total number of files processed: " + str(count))
+
+tot = sum(total_count)
+print("Match Percentage:" + str((sum(count_for_each) / tot) * 100))
