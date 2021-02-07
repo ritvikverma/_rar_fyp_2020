@@ -1,0 +1,895 @@
+[{
+    "incident": "8 car emu stock transfer",
+    "total": 18,
+    "sub-incident": [{
+        "incident": "8 car emu stock transfer",
+        "total": 17
+    }, {
+        "incident": "8 car emu stock transfer via ads",
+        "total": 1
+    }]
+}, {
+    "incident": "8 car emu test run",
+    "total": 7,
+    "sub-incident": [{
+        "incident": "8 car emu test run",
+        "total": 3
+    }, {
+        "incident": "8 car emu test run 1 round trip",
+        "total": 1
+    }, {
+        "incident": "8 car emu test run sacem",
+        "total": 3
+    }]
+}, {
+    "incident": "8 car emu train transfer to tkd",
+    "total": 2
+}, {
+    "incident": "a 189 dcl on for several seconds",
+    "total": 1
+}, {
+    "incident": "a side head light out",
+    "total": 1
+}, {
+    "incident": "abnormal smell",
+    "total": 4,
+    "sub-incident": [{
+        "incident": "abnormal smell reported",
+        "total": 2
+    }, {
+        "incident": "abnormal smell detected inside tunnel",
+        "total": 1
+    }, {
+        "incident": "odd smell detected",
+        "total": 1
+    }]
+}, {
+    "incident": "abnormal sound",
+    "total": 5,
+    "sub-incident": [{
+        "incident": "abnormal sound",
+        "total": 1
+    }, {
+        "incident": "abnormal sound during door operation",
+        "total": 1
+    }, {
+        "incident": "abnormal sound on train door",
+        "total": 1
+    }, {
+        "incident": "abnormal sound generated",
+        "total": 1
+    }, {
+        "incident": "abnormal sound heard from the train door during operation",
+        "total": 1
+    }]
+}, {
+    "incident": "ac",
+    "comments": "Is this air conditioning?",
+    "total": 7,
+    "sub-incident": [{
+        "incident": "ac 1 smoke detector fault",
+        "total": 1
+    }, {
+        "incident": "ac compressor over temperature",
+        "total": 1
+    }, {
+        "incident": "ac dirty smoke detect fault",
+        "total": 1
+    }, {
+        "incident": "ac fault with gfi brighten",
+        "total": 1
+    }, {
+        "incident": "ac no2 condenser fan fault",
+        "total": 1
+    }, {
+        "incident": "ac no2 fault",
+        "total": 1
+    }, {
+        "incident": "ac no2 plc fault",
+        "total": 1
+    }]
+}, {
+    "incident": "ac2",
+    "comments": "Is this air conditioning?",
+    "total": 2,
+    "sub-incident": [{
+        "incident": "ac2 fault",
+        "total": 1
+    }, {
+        "incident": "ac2 plc fault",
+        "total": 1
+    }]
+}, {
+    "incident": "acpmcp error fault pa related",
+    "total": 1
+}, {
+    "incident": "additional slotin train due to platform crowd",
+    "total": 1
+}, {
+    "incident": "air con 1 fault",
+    "total": 1
+}, {
+    "incident": "all ghds alarm activated",
+    "total": 1
+}, {
+    "incident": "alleged nipped by train door",
+    "total": 2
+}, {
+    "incident": "alleged wrong pa broadcast",
+    "total": 1
+}, {
+    "incident": "incorrect pa broadcast",
+    "total": 1
+}, {
+    "incident": "apg",
+    "total": 6,
+    "sub-incident": [{
+        "incident": "apg failed to close",
+        "total": 2
+    }, {
+        "incident": "apg failure",
+        "total": 1
+    }, {
+        "incident": "apg kept closed",
+        "total": 1
+    }, {
+        "incident": "apg problem",
+        "total": 2
+    }]
+}, {
+    "incident": "apgs failure",
+    "comments": "Is this apg?",
+    "total": 1
+}, {
+    "incident": "aside cab door failed to open",
+    "total": 2
+}, {
+    "incident": "aside start button fault",
+    "total": 1
+}, {
+    "incident": "aside sunscreen failure",
+    "total": 1
+}, {
+    "incident": "at failure",
+    "total": 14,
+    "sub-incident": [{
+        "incident": "at failure",
+        "total": 10
+    }, {
+        "incident": "at failure trainborne",
+        "total": 4
+    }]
+}, {
+    "incident": "atdc malfunction",
+    "total": 2,
+    "sub-incident": [{
+        "incident": "atdc malfunction",
+        "total": 1
+    }, {
+        "incident": "atdc malfunction incab cctv malfunction",
+        "total": 1
+    }]
+}, {
+    "incident": "auto",
+    "total": 6,
+    "sub-incident": [{
+        "incident": "auto dvas pa failure",
+        "total": 1
+    }, {
+        "incident": "auto overrun",
+        "total": 1
+    }, {
+        "incident": "auto stop and resumed after pressed start button",
+        "total": 1
+    }, {
+        "incident": "auto trip to stop",
+        "total": 1
+    }, {
+        "incident": "auto tripped",
+        "total": 2
+    }]
+}, {
+    "incident": "auxiliary fault",
+    "total": 8,
+    "sub-incident": [{
+            "incident": "auxiliary fault",
+            "total": 4
+        },
+        {
+            "incident": "auxiliary fault and self reset to normal",
+            "total": 1
+        }, {
+            "incident": "auxiliary fault and reset by on button",
+            "total": 1
+        }, {
+            "incident": "resettable aux fault",
+            "total": 2
+        }
+    ]
+}, {
+    "incident": "brake issue",
+    "total": 1
+}, {
+    "incident": "bside head light out",
+    "total": 1
+}, {
+    "incident": "cab",
+    "total": 10,
+    "sub-incident": [{
+        "incident": "cab aircon failure",
+        "total": 4
+    }, {
+        "incident": "cab light out",
+        "total": 2
+    }, {
+        "incident": "cab to saloon door opened",
+        "total": 3
+    }, {
+        "incident": "resettable cab ac fault",
+        "total": 1
+    }]
+}, {
+    "incident": "cad problem",
+    "total": 1
+}, {
+    "incident": "cm overrun 05m set back to stopping mark",
+    "total": 1
+}, {
+    "incident": "could not depart after pressing start button",
+    "total": 1
+}, {
+    "incident": "doe not available dibs operated for platform duty",
+    "total": 1
+}, {
+    "incident": "doi",
+    "total": 3,
+    "sub-incident": [{
+        "incident": "doi failed to extinguish",
+        "total": 1
+    }, {
+        "incident": "doi remained brightened",
+        "total": 2
+    }]
+}, {
+    "incident": "door",
+    "total": 10,
+    "sub-incident": [{
+        "incident": "door damage by unknown object",
+        "total": 1
+    }, {
+        "incident": "door nipping",
+        "total": 3
+    }, {
+        "incident": "train door nipping",
+        "total": 1
+    }, {
+        "incident": "door side handle loosen",
+        "total": 1
+    }, {
+        "incident": "door trouble",
+        "total": 3
+    }, {
+        "incident": "train door failed to open",
+        "total": 1
+    }]
+}, {
+    "incident": "dpr fail to energise",
+    "total": 1
+}, {
+    "incident": "drop sir could be reset afterward",
+    "comments": "Is this dropper?",
+    "total": 1
+}, {
+    "incident": "dropper broken",
+    "total": 1
+}, {
+    "incident": "dvas",
+    "total": 5,
+    "sub-incident": [{
+        "incident": "dvas auto broadcasting failed",
+        "total": 1
+    }, {
+        "incident": "dvas failed",
+        "total": 4
+    }]
+}, {
+    "incident": "dvr",
+    "total": 2,
+    "sub-incident": [{
+        "incident": "dvr error",
+        "total": 1
+    }, {
+        "incident": "dvr faulty",
+        "total": 1
+    }]
+}, {
+    "incident": "edge gap hazard detection alarm activated",
+    "total": 1
+}, {
+    "incident": "emu",
+    "total": 4,
+    "sub-incident": [{
+        "incident": "emu main line test run for sacem",
+        "total": 1
+    }, {
+        "incident": "emu stock transfer",
+        "total": 3
+    }]
+}, {
+    "incident": "ess operated",
+    "total": 12,
+    "sub-incident": [{
+        "incident": "ess operated due to ghd alarm activation",
+        "total": 9
+    }, {
+        "incident": "ess operated suspected did not perform platform duty",
+        "total": 2
+    }, {
+        "incident": "ess operated tad open alarm",
+        "total": 1
+    }]
+}, {
+    "incident": "etnd failure",
+    "total": 1
+}, {
+    "incident": "etrain failure",
+    "total": 1
+}, {
+    "incident": "external object",
+    "total": 4,
+    "sub-incident": [{
+        "incident": "external object found on trackside",
+        "total": 1
+    }, {
+        "incident": "external object jammed at train door",
+        "total": 2
+    }, {
+        "incident": "external object jammed in key hole",
+        "total": 1
+    }]
+}, {
+    "incident": "fsm indication fault",
+    "total": 1
+}, {
+    "incident": "gangway misaligned",
+    "total": 1
+}, {
+    "incident": "ghd alarm activation",
+    "total": 3,
+    "sub-incident": [{
+        "incident": "ghd activated because of passenger waving hand over apg",
+        "total": 1
+    }, {
+        "incident": "ghd alarm activation",
+        "total": 2
+    }]
+}, {
+    "incident": "graffitti on car body found",
+    "total": 1
+}, {
+    "incident": "grasshoppers were found on train saloon",
+    "total": 1
+}, {
+    "incident": "handle damaged",
+    "total": 1
+}, {
+    "incident": "hcr failure",
+    "total": 1
+}, {
+    "incident": "hopper window opened",
+    "total": 3
+}, {
+    "incident": "htrcb htlcb tripped",
+    "total": 1
+}, {
+    "incident": "cctv",
+    "total": 29,
+    "sub-incident": [{
+        "incident": "incab cctv failure",
+        "total": 19
+    }, {
+        "incident": "incab cctv malfunction",
+        "total": 1
+    }, {
+        "incident": "incab cctv no image",
+        "total": 1
+    }, {
+        "incident": "incab cctv not working every platforms",
+        "total": 1
+    }, {
+        "incident": "insaloon cctv decoder error",
+        "total": 1
+    }, {
+        "incident": "no incab cctv footage image",
+        "total": 4
+    }, {
+        "incident": "no incab cctv footage image enroute",
+        "total": 2
+    }]
+}, {
+    "incident": "jammed mode selector at forward position",
+    "total": 1
+}, {
+    "incident": "last train behind schedule for tkl incident",
+    "total": 1
+}, {
+    "incident": "late departed due to crewing problem",
+    "total": 1
+}, {
+    "incident": "lock of cab to saloon door difficult to lock",
+    "total": 1
+}, {
+    "incident": "logical occupancy",
+    "total": 1
+}, {
+    "incident": "lost td",
+    "total": 1
+}, {
+    "incident": "main air",
+    "total": 3,
+    "sub-incident": [{
+        "incident": "main air compressor not operated",
+        "total": 2
+    }, {
+        "incident": "main air compressor not operated self reset",
+        "total": 1
+    }]
+}, {
+    "incident": "main line",
+    "total": 7,
+    "sub-incident": [{
+        "incident": "main line test run",
+        "total": 2
+    }, {
+        "incident": "main line test run for hm",
+        "total": 1
+    }, {
+        "incident": "main line test run for power fault",
+        "total": 1
+    }, {
+        "incident": "main line test run for sacem",
+        "total": 3
+    }]
+}, {
+    "incident": "marker mark found",
+    "total": 1
+}, {
+    "incident": "mask seal broken",
+    "total": 1
+}, {
+    "incident": "minor overrun set back",
+    "total": 2
+}, {
+    "incident": "multiple incidents",
+    "total": 24,
+    "sub-incident": [{
+        "incident": "multiple incidents",
+        "total": 17
+    }, {
+        "incident": "multiple incidents poe",
+        "total": 5
+    }, {
+        "incident": "multiple incidents poe service suspension",
+        "total": 1
+    }, {
+        "incident": "multiple incidents pad operated for a passenger injury and a passenger refused to leave train at terminus",
+        "total": 1
+    }]
+}, {
+    "incident": "nipped by apg",
+    "total": 2
+}, {
+    "incident": "nipped by train doors",
+    "total": 7,
+    "sub-incident": [{
+        "incident": "nipped by train doors",
+        "total": 5
+    }, {
+        "incident": "object nipped by train doors",
+        "total": 1
+    }, {
+        "incident": "object nipped by offside train door",
+        "total": 1
+    }]
+}, {
+    "incident": "nipped external object",
+    "total": 1
+}, {
+    "incident": "no der and need operated dibs and psl to open train doors and psds then at failure",
+    "total": 1
+}, {
+    "incident": "no der dibs and psl operation",
+    "total": 1
+}, {
+    "incident": "no doe dibs and psl operation",
+    "comments": "is this der, not doe?",
+    "total": 1
+}, {
+    "incident": "no incctv signal at tik 2 platform",
+    "total": 1
+}, {
+    "incident": "sound measurement",
+    "total": 2,
+    "sub-incident": [{
+        "incident": "sound measurement",
+        "total": 1
+    }, {
+        "incident": "sound measurement at tkl",
+        "total": 1
+    }]
+}, {
+    "incident": "opened hopper window",
+    "total": 1
+}, {
+    "incident": "overcarry",
+    "total": 1
+}, {
+    "incident": "overrun setback",
+    "total": 48,
+    "sub-incident": [{
+        "incident": "overrun setback",
+        "total": 1
+    }, {
+        "incident": "overrun 05m rm mode setback",
+        "total": 4
+    }, {
+        "incident": "overrun 05m setback",
+        "total": 28
+    }, {
+        "incident": "overrun 05m setback to stopping mark",
+        "total": 3
+    }, {
+        "incident": "overrun 06m setback",
+        "total": 5
+    }, {
+        "incident": "overrun 1m rm mode setback",
+        "total": 1
+    }, {
+        "incident": "overrun 1m setback",
+        "total": 5
+    }, {
+        "incident": "overrun 1m under at operation",
+        "total": 1
+    }]
+}, {
+    "incident": "overrun 2 cars set back to stopping mark",
+    "total": 1
+}, {
+    "incident": "pa malfunction",
+    "total": 1
+}, {
+    "incident": "pad operated",
+    "total": 58,
+    "sub-incident": [{
+        "incident": "pad operated",
+        "total": 12
+    }, {
+        "incident": "pad operated because of indecent exposure case",
+        "total": 1
+    }, {
+        "incident": "pad operated dispute",
+        "total": 2
+    }, {
+        "incident": "pad operated dispute case",
+        "total": 1
+    }, {
+        "incident": "pad operated door nipped",
+        "total": 1
+    }, {
+        "incident": "pad operated due to cm sick person",
+        "comments": "What is cm?",
+        "total": 1
+    }, {
+        "incident": "pad operated due to sick person",
+        "total": 27
+    }, {
+        "incident": "pad operated due to tote bag nipped",
+        "total": 1
+    }, {
+        "incident": "pad operated for object nipped by off side door",
+        "total": 1
+    }, {
+        "incident": "pad operated for own sick person",
+        "total": 3
+    }, {
+        "incident": "pad operated for passenger dispute",
+        "total": 1
+    }, {
+        "incident": "pad operated for passenger injury",
+        "total": 3
+    }, {
+        "incident": "pad operated for unknown reason",
+        "total": 4
+    }]
+}, {
+    "incident": "pad pep operated",
+    "total": 1
+}, {
+    "incident": "paiu fault",
+    "total": 1
+}, {
+    "incident": "passenger injury",
+    "total": 7,
+    "sub-incident": [{
+        "incident": "passenger injury",
+        "total": 4
+    }, {
+        "incident": "passenger injury door nipping",
+        "total": 1
+    }, {
+        "incident": "passenger injury alleged door nipping",
+        "total": 1
+    }, {
+        "incident": "passenger injury own issue",
+        "total": 1
+    }]
+}, {
+    "incident": "pep operated",
+    "total": 3,
+    "sub-incident": [{
+        "incident": "pep operated",
+        "total": 1
+    }, {
+        "incident": "pep operated for sick person",
+        "total": 1
+    }, {
+        "incident": "pep operated passenger injury",
+        "total": 1
+    }]
+}, {
+    "incident": "plastic object entangled at the ohl",
+    "total": 1
+}, {
+    "incident": "platform track lp retrieving",
+    "total": 1
+}, {
+    "incident": "police case drunk person",
+    "total": 1
+}, {
+    "incident": "poor radio performance",
+    "total": 1
+}, {
+    "incident": "power fault",
+    "total": 10,
+    "sub-incident": [{
+        "incident": "power fault could not reset",
+        "total": 1
+    }, {
+        "incident": "power fault flashing",
+        "total": 1
+    }, {
+        "incident": "power fault reset ok",
+        "total": 1
+    }, {
+        "incident": "power fault resettable",
+        "total": 4
+    }, {
+        "incident": "power fault unresettable",
+        "total": 2
+    }, {
+        "incident": "power fault when braking repeatedly",
+        "total": 1
+    }]
+}, {
+    "incident": "psd fault",
+    "total": 4,
+    "sub-incident": [{
+        "incident": "psd fault",
+        "total": 2
+    }, {
+        "incident": "psd failed to close",
+        "total": 2
+    }]
+}, {
+    "incident": "psl operated for platform duty",
+    "total": 1
+}, {
+    "incident": "rear cab door had not been closed",
+    "total": 1
+}, {
+    "incident": "sacem 01 fault",
+    "total": 1
+}, {
+    "incident": "screw of tmu base part was slightly loosened",
+    "total": 1
+}, {
+    "incident": "service regulaion",
+    "total": 3,
+    "sub-incident": [{
+        "incident": "service regulaion for lower passenger demand",
+        "total": 1
+    }, {
+        "incident": "service regulation at late peak due to poe",
+        "total": 1
+    }, {
+        "incident": "service regulation for lower passenger demand",
+        "total": 1
+    }]
+}, {
+    "incident": "sir drop",
+    "total": 1
+}, {
+    "incident": "sir dropped and reset",
+    "total": 1
+}, {
+    "incident": "siv fault",
+    "total": 3,
+    "sub-incident": [{
+        "incident": "siv fault",
+        "total": 2
+    }, {
+        "incident": "siv fault ac overload current cannot be reset",
+        "total": 1
+    }]
+}, {
+    "incident": "slotin train",
+    "total": 3,
+    "sub-incident": [{
+        "incident": "slotin train not available",
+        "total": 2
+    }, {
+        "incident": "slotin train path replacement due to passenger demand",
+        "total": 1
+    }]
+}, {
+    "incident": "small fire on trackside",
+    "total": 1
+}, {
+    "incident": "small part of clothing nipped at offside train door",
+    "total": 1
+}, {
+    "incident": "smoke detector faulty",
+    "total": 3
+}, {
+    "incident": "staff injury",
+    "total": 2
+}, {
+    "incident": "stock transfer",
+    "total": 29,
+    "sub-incident": [{
+        "incident": "stock transfer",
+        "total": 19
+    }, {
+        "incident": "stock transfer kb to twd via ads",
+        "comments": "kdb?",
+        "total": 1
+    }, {
+        "incident": "stock transfer kbd to ads",
+        "total": 1
+    }, {
+        "incident": "stock transfer kbd to cwd via ads",
+        "total": 2
+    }, {
+        "incident": "stock transfer kbd to lhp",
+        "total": 1
+    }, {
+        "incident": "stock transfer kbd to tkd",
+        "total": 4
+    }, {
+        "incident": "stock transfer kbd to twd via ads",
+        "total": 1
+    }]
+}, {
+    "incident": "stop short and rm to stopping mark",
+    "total": 1
+}, {
+    "incident": "strap hanger",
+    "total": 6,
+    "sub-incident": [{
+        "incident": "strap hanger detached",
+        "total": 2
+    }, {
+        "incident": "strap hanger damage",
+        "total": 2
+    }, {
+        "incident": "strap hanger broken",
+        "total": 2
+    }]
+}, {
+    "incident": "sunscreen loosen",
+    "total": 1
+}, {
+    "incident": "tcap requested pnr",
+    "total": 1
+}, {
+    "incident": "td lost",
+    "total": 1
+}, {
+    "incident": "tear gas smell reported",
+    "total": 1
+}, {
+    "incident": "test run",
+    "total": 8,
+    "sub-incident": [{
+        "incident": "test run",
+        "total": 4
+    }, {
+        "incident": "test run for power fault",
+        "total": 1
+    }, {
+        "incident": "test run for sacem",
+        "total": 2
+    }, {
+        "incident": "test run power fault",
+        "total": 1
+    }]
+}, {
+    "incident": "tetra radio poor reception signal",
+    "total": 2
+}, {
+    "incident": "tis",
+    "comments": "Is this tms?",
+    "total": 3,
+    "sub-incident": [{
+        "incident": "tis prompt compressor stopped",
+        "total": 1
+    }, {
+        "incident": "tis prompted door failed to close",
+        "total": 1
+    }, {
+        "incident": "tis show door not open",
+        "total": 1
+    }]
+}, {
+    "incident": "tms",
+    "comments": "Is this tis?",
+    "total": 3,
+    "sub-incident": [{
+        "incident": "tms prompt ac1 smoke detect fault",
+        "total": 1
+    }, {
+        "incident": "tms prompt cab ac fault",
+        "total": 1
+    }, {
+        "incident": "tms prompt compressor not working",
+        "total": 1
+    }]
+}, {
+    "incident": "to alleged dpr fail to energise",
+    "total": 1
+}, {
+    "incident": "track circuit failure",
+    "total": 1
+}, {
+    "incident": "trackside clearance mode operated",
+    "total": 1
+}, {
+    "incident": "train delay due to twl incident",
+    "total": 1
+}, {
+    "incident": "train diverted to twl for regulation",
+    "total": 1
+}, {
+    "incident": "train service arrangement for poe",
+    "total": 1
+}, {
+    "incident": "train service pattern and incident for poe",
+    "total": 2
+}, {
+    "incident": "train speed discrepancy",
+    "total": 1
+}, {
+    "incident": "train tripped due to psd open alarm",
+    "total": 1
+}, {
+    "incident": "trs ring sound malfunction",
+    "total": 1
+}, {
+    "incident": "uai lo found",
+    "total": 1
+}, {
+    "incident": "unauthorized sticker found",
+    "total": 6
+}, {
+    "incident": "vvvf fault",
+    "total": 1
+}, {
+    "incident": "wrong destination information was reported",
+    "total": 1
+}, {
+    "incident": "zero target received",
+    "total": 1
+}, {
+    "incident": "zero target speed",
+    "total": 2
+}]
