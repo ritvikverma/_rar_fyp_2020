@@ -33,29 +33,30 @@ def populate_accidents_list():
 
 
 if __name__ == "__main__":
-    # accident_list = populate_accidents_list()
+    accident_list = populate_accidents_list()
 
-    # # lower case
-    # accident_list = list(map(
-    #     lambda x: x.lower(), accident_list))
+    # lower case
+    accident_list = list(map(
+        lambda x: x.lower(), accident_list))
 
-    # # remove punctuation
-    # accident_list = list(map(
-    #     lambda x: x.translate(str.maketrans(
-    #         "", "", string.punctuation)), accident_list))
+    # remove punctuation
+    accident_list = list(map(
+        lambda x: x.translate(str.maketrans(
+            "", "", string.punctuation)), accident_list))
 
-    # # trim
-    # accident_list = list(map(
-    #     lambda x: " ".join(x.split()), accident_list))
+    # trim
+    accident_list = list(map(
+        lambda x: " ".join(x.split()), accident_list))
 
-    # accident_list = sorted([f"{v}: {k}"for k, v in Counter(accident_list).items()], key =lambda x: x.split(":")[1])
+    accident_list = sorted([f"{v}: {k}"for k, v in Counter(
+        accident_list).items()], key=lambda x: x.split(":")[1])
 
-    # with open("temp.txt", "w") as f:
-    #     for accident in accident_list:
-    #         f.write(f"{accident}\n")
-    with open("classification.json", "r") as f:
-        classification = json.load(f)
-        total = 0
-        for incident in classification:
-            total += incident["total"]
-        print(total)
+    with open("temp.txt", "w") as f:
+        for accident in accident_list:
+            f.write(f"{accident}\n")
+    # with open("classification.json", "r") as f:
+    #     classification = json.load(f)
+    #     total = 0
+    #     for incident in classification:
+    #         total += incident["total"]
+    #     print(total)
