@@ -147,7 +147,6 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                         query = dataframe.index[
                             name_mask & datetime_mask
                         ].sort_values(["act_arr_time"])
-
                         for index in query[0]:
                             quantile_check = check_quantile_track(
                                 config, index, dataframe)
@@ -157,9 +156,8 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                                 num_found += 1
                                 for i in range(len(config["columns_added"])):
                                     dataframe.at[index,
-                                                 config["columns_added"]] = quantile_check[i]
-
-                        total += 1
+                                                 config["columns_added"][i]] = quantile_check[i]
+                            total += 1
         config["total_count"] += (total, )
         config["count_for_each"] += (num_found, )
         dataframe.to_csv(relative_uri_csv, index=False)
