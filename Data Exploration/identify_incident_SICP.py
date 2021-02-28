@@ -62,11 +62,11 @@ def read_csv(config, relative_uri):
     dataframe['destination_code_train'] = dataframe['train'].str[0]
     dataframe['timetable_code_train'] = dataframe['train'].str[1]
     dataframe['number_train'] = dataframe['train'].str[2:]
-    dataframe = dataframe.drop('train', axis=1)
 
     for i in range(len(config["columns_added"])):
         if config["columns_added"][i] not in dataframe:
-            dataframe[config["columns_added_default_value"][i]] = str(False)
+            dataframe[config["columns_added"][i]
+                      ] = config["columns_added_default_value"][i]
 
     return dataframe
 
