@@ -21,18 +21,18 @@ def initialize_variables():
     config["time_range"] = 1
 
     # URI for the files
-    config["relative_uri_SICP"] = os.path.join("../SICP", "incident")
+    config["relative_uri_SICP"] = os.path.join("..", "SICP", "incident")
     config["relative_uri_accidents_records"] = os.path.join(
-        "../accidents_record", "logs", "TCSS ")
-    config["count_found_total"] = "count_found_total.txt"
+        "..", "accidents_record", "logs", "TCSS ")
+    config["count_found_total"] = os.path.join("Misc", "count_found_total.txt")
 
     # For checking with all quantiles
     config["all_quantiles"] = (95, 90, 85, 80, 75, 70)
     config["list_of_quant_dicts"] = initialize_quantile_dicts(config)
 
     # Column being added to the CSV files
-    config["columns_added"] = ("incident", "quantile")
-    config["columns_added_default_value"] = (False, 0)
+    config["columns_added"] = ("incident", "quantile", "fault_description")
+    config["columns_added_default_value"] = (False, 0, "")
     config["count_for_each"] = ()
     config["total_count"] = ()
     config["dir_name"] = ()
@@ -129,6 +129,7 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
         with open(relative_uri_json) as json_file:
             data = json.load(json_file)
             for event in data["events"]:
+                fault_desc = event["Fault Description"]
                 for desc in event["event_descriptions"]:
                     if desc["Train No"] != "":
                         train_number = desc["Train No"]
@@ -151,9 +152,9 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
 
                         incident_found = False
                         for index in query[0]:
-                            quantile_check = check_quantile_track(
+                            is_incident, quantile = check_quantile_track(
                                 config, index, dataframe)
-                            is_incident = quantile_check[0]
+                            quantile_check = (is_incident, quantile, fault_desc)
                             if is_incident:
                                 incident_found = True
                                 for i in range(len(config["columns_added"])):
@@ -176,7 +177,8 @@ def write_count_found_total():
         debug_arr = [(config["dir_name"][i], config["count_for_each"][i], config["total_count"][i]) for i in range(
             min(len(config["count_for_each"]), len(config["total_count"])))]
         for dirname, found, total in debug_arr:
-            f.write(f"{dirname}\n {found} : {total} \n")
+            f.write(
+                f"{dirname}\n Incidents Tagged {found}\n Total Incidents {total}\n Percentage : {found/total * 100}%\n\n")
 
 
 def print_results():
