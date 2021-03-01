@@ -24,7 +24,7 @@ def initialize_variables():
     config["relative_uri_SICP"] = os.path.join("../SICP", "incident")
     config["relative_uri_accidents_records"] = os.path.join(
         "../accidents_record", "logs", "TCSS ")
-    config["relative_uri_json"] = ""
+    config["count_found_total"] = "count_found_total.txt"
 
     # For checking with all quantiles
     config["all_quantiles"] = (95, 90, 85, 80, 75, 70)
@@ -35,6 +35,7 @@ def initialize_variables():
     config["columns_added_default_value"] = (False, 0)
     config["count_for_each"] = ()
     config["total_count"] = ()
+    config["dir_name"] = ()
 
     config["debug"] = True
     return config
@@ -147,22 +148,35 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                         query = dataframe.index[
                             name_mask & datetime_mask
                         ].sort_values(["act_arr_time"])
+
+                        incident_found = False
                         for index in query[0]:
                             quantile_check = check_quantile_track(
                                 config, index, dataframe)
                             is_incident = quantile_check[0]
-
                             if is_incident:
-                                num_found += 1
+                                incident_found = True
                                 for i in range(len(config["columns_added"])):
                                     dataframe.at[index,
                                                  config["columns_added"][i]] = quantile_check[i]
-                            total += 1
-        config["total_count"] += (total, )
-        config["count_for_each"] += (num_found, )
+                        if incident_found:
+                            num_found += 1
+                        total += 1
+        if config["debug"]:
+            config["total_count"] += (total, )
+            config["count_for_each"] += (num_found, )
+            config["dir_name"] += (relative_uri_csv, )
         dataframe.to_csv(relative_uri_csv, index=False)
     except os.error as e:
         print("File not found " + e.filename)
+
+
+def write_count_found_total():
+    with open(config["count_found_total"], "w") as f:
+        debug_arr = [(config["dir_name"][i], config["count_for_each"][i], config["total_count"][i]) for i in range(
+            min(len(config["count_for_each"]), len(config["total_count"])))]
+        for dirname, found, total in debug_arr:
+            f.write(f"{dirname}\n {found} : {total} \n")
 
 
 def print_results():
@@ -184,4 +198,6 @@ if __name__ == '__main__':
             relative_uri_json = config["relative_uri_accidents_records"] + json_file
             detect_incidents(config, relative_uri_csv, relative_uri_json)
             count += 1
-    print_results()
+    if config["debug"]:
+        write_count_found_total()
+        print_results()
