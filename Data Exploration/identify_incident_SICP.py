@@ -89,7 +89,13 @@ def get_quantile_mask(dataframe, col_name, quantile):
 
 
 # Creates the date mask corresponding to the event time
-def get_datetime_mask(dataframe, col_name, start_date, end_date):
+def get_datetime_mask(dataframe, incident_event_time, col_name):
+    event_time = format_date(incident_event_time)
+    start_date = event_time - \
+        timedelta(minutes=config["time_range"])
+    end_date = event_time + \
+        timedelta(minutes=config["time_range"])
+
     act_arr_time_series = pd.to_datetime(
         dataframe[col_name], format="%Y-%m-%d %H:%M:%S.%f"
     ).astype("datetime64[s]")
@@ -134,14 +140,8 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                     if desc["Train No"] != "":
                         train_number = desc["Train No"]
 
-                        event_time = format_date(desc["Event Time"])
-                        start_date = event_time - \
-                            timedelta(minutes=config["time_range"])
-                        end_date = event_time + \
-                            timedelta(minutes=config["time_range"])
-
                         datetime_mask = get_datetime_mask(
-                            dataframe, "act_arr_time", start_date, end_date
+                            dataframe, desc["Event Time"], "act_arr_time"
                         )
 
                         name_mask = get_name_mask(dataframe, str(train_number))
@@ -154,7 +154,8 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                         for index in query[0]:
                             is_incident, quantile = check_quantile_track(
                                 config, index, dataframe)
-                            quantile_check = (is_incident, quantile, fault_desc)
+                            quantile_check = (
+                                is_incident, quantile, fault_desc)
                             if is_incident:
                                 incident_found = True
                                 for i in range(len(config["columns_added"])):
