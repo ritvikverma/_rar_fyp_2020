@@ -1,8 +1,9 @@
 import json
 import os
 from datetime import timedelta
-
 import pandas as pd
+
+from utils import format_date
 
 
 def initialize_quantile_dicts(config):
@@ -87,8 +88,9 @@ def get_quantile_mask(dataframe, col_name, quantile):
         )
     raise Exception("incorrect input")
 
-
 # Creates the date mask corresponding to the event time
+
+
 def get_datetime_mask(dataframe, incident_event_time, col_name):
     event_time = format_date(incident_event_time)
     start_date = event_time - \
@@ -100,15 +102,6 @@ def get_datetime_mask(dataframe, incident_event_time, col_name):
         dataframe[col_name], format="%Y-%m-%d %H:%M:%S.%f"
     ).astype("datetime64[s]")
     return (act_arr_time_series > start_date) & (act_arr_time_series <= end_date)
-
-# Converts date time in SICP to python datetime object
-
-
-def format_date(event_time):
-    event_time = event_time.split("/")
-    event_time[-1] = "20" + event_time[-1]
-    event_time = ("/").join(event_time)
-    return pd.to_datetime(event_time, format="%d/%m/%Y %H:%M")
 
 
 # Calculates the quantile for every track and station pair
