@@ -3,22 +3,13 @@ import os
 from datetime import timedelta
 import pandas as pd
 
-from utils import format_date
-
-
-def initialize_quantile_dicts(config):
-    list_of_quant_dicts = ()
-    for x in config["all_quantiles"]:
-        file_name = f"Quantiles/{config['column_being_checked']}_quantile_{x}.json"
-        f = open(file_name)
-        list_of_quant_dicts += (json.load(f), )
-    return list_of_quant_dicts
+from utils import get_datetime_mask, check_quantile_track, initialize_quantile_dicts
 
 
 def initialize_variables():
     config = {}
     # Parameters to be edited
-    config["column_being_checked"] = "act_travelling_time"
+    config["quantile_column_being_checked"] = "act_travelling_time"
     config["time_range"] = 1
 
     # URI for the files
@@ -88,36 +79,6 @@ def get_quantile_mask(dataframe, col_name, quantile):
         )
     raise Exception("incorrect input")
 
-# Creates the date mask corresponding to the event time
-
-
-def get_datetime_mask(dataframe, incident_event_time, col_name):
-    event_time = format_date(incident_event_time)
-    start_date = event_time - \
-        timedelta(minutes=config["time_range"])
-    end_date = event_time + \
-        timedelta(minutes=config["time_range"])
-
-    act_arr_time_series = pd.to_datetime(
-        dataframe[col_name], format="%Y-%m-%d %H:%M:%S.%f"
-    ).astype("datetime64[s]")
-    return (act_arr_time_series > start_date) & (act_arr_time_series <= end_date)
-
-
-# Calculates the quantile for every track and station pair
-def check_quantile_track(config, index, dataframe):
-    track_no = dataframe.loc[[index], "track"].values[0]
-    station = dataframe.loc[[index], "station"].values[0]
-    track_station_pair = str(station) + "-" + str(track_no)
-
-    for i, value in enumerate(config["all_quantiles"]):
-        quantile_value = config["list_of_quant_dicts"][i][track_station_pair]
-        row_value = dataframe.loc[[index],
-                                  config["column_being_checked"]].values[0]
-        if row_value >= quantile_value:
-            return (True, value)
-    return (False, 0)
-
 
 # Detects the incidents for the passed file
 def detect_incidents(config, relative_uri_csv, relative_uri_json):
@@ -134,7 +95,7 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                         train_number = desc["Train No"]
 
                         datetime_mask = get_datetime_mask(
-                            dataframe, desc["Event Time"], "act_arr_time"
+                            dataframe, desc["Event Time"], "act_arr_time", config["time_range"], is_json_date=True
                         )
 
                         name_mask = get_name_mask(dataframe, str(train_number))
@@ -146,7 +107,7 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                         incident_found = False
                         for index in query[0]:
                             is_incident, quantile = check_quantile_track(
-                                config, index, dataframe)
+                                config["all_quantiles"], config["list_of_quant_dicts"], config["quantile_column_being_checked"], index, dataframe)
                             quantile_check = (
                                 is_incident, quantile, fault_desc)
                             if is_incident:
