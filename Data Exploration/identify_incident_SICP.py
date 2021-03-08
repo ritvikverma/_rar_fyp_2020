@@ -1,9 +1,8 @@
 import json
 import os
-from datetime import timedelta
 import pandas as pd
 
-from utils import get_datetime_mask, check_quantile_track, initialize_quantile_dicts
+from utils import get_datetime_mask, check_quantile_track, initialize_quantile_dicts, update_SICP_row
 
 
 def initialize_variables():
@@ -108,13 +107,12 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                         for index in query[0]:
                             is_incident, quantile = check_quantile_track(
                                 config["all_quantiles"], config["list_of_quant_dicts"], config["quantile_column_being_checked"], index, dataframe)
-                            quantile_check = (
+                            added_tuple = (
                                 is_incident, quantile, fault_desc)
                             if is_incident:
                                 incident_found = True
-                                for i in range(len(config["columns_added"])):
-                                    dataframe.at[index,
-                                                 config["columns_added"][i]] = quantile_check[i]
+                                update_SICP_row(
+                                    dataframe, config["columns_added"], index, added_tuple)
                         if incident_found:
                             num_found += 1
                         total += 1

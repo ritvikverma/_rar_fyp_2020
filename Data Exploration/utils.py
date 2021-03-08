@@ -52,3 +52,9 @@ def check_quantile_track(all_quantiles, list_of_quant_dicts, column_being_checke
         if row_value >= quantile_value:
             return (True, value)
     return (False, 0)
+
+
+def update_SICP_row(dataframe, columns_added, index, added_tuple):
+    for i in range(len(columns_added)):
+        dataframe.at[index,
+                     columns_added[i]] = added_tuple[i]

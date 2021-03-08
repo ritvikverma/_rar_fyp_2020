@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-from utils import get_datetime_mask, check_quantile_track, initialize_quantile_dicts
+from utils import get_datetime_mask, check_quantile_track, initialize_quantile_dicts, update_SICP_row
 
 
 def initialize_variables():
@@ -22,6 +22,7 @@ def initialize_variables():
     config["list_of_quant_dicts"] = initialize_quantile_dicts(config)
 
     config["physical_train_number_column"] = "number_train"
+    config["avg_propogated_incidents"] = ()
 
     return config
 
@@ -61,6 +62,7 @@ def filter_dataframe(config, dataframe, incident):
 
 
 def check_delay_propogation(config, dataframe, incidents, relative_uri_csv):
+    count = 0
     for incident in incidents.itertuples():
         query = filter_dataframe(config, dataframe, incident)
         for index in query[0]:
@@ -69,11 +71,21 @@ def check_delay_propogation(config, dataframe, incidents, relative_uri_csv):
             added_tuple = (is_incident, incident[0],  get_value_from_incident(
                 dataframe, incident, "fault_description"))
             if is_incident:
-                for i in range(len(config["columns_added"])):
-                    dataframe.at[index,
-                                 config["columns_added"][i]] = added_tuple[i]
+                count += 1
+                
+                #should we make a recersive call here?
 
+                update_SICP_row(
+                    dataframe, config["columns_added"], index, added_tuple)
+
+    config["avg_propogated_incidents"] += (count /
+                                           len(incidents) if len(incidents) > 0 else 1, )
     dataframe.to_csv(relative_uri_csv, index=False)
+
+
+def print_statistics(config):
+    print(
+        f"Oveall Average: {sum(config['avg_propogated_incidents'])}/{len(config['avg_propogated_incidents'])}")
 
 
 if __name__ == '__main__':
@@ -83,3 +95,4 @@ if __name__ == '__main__':
         dataframe = read_csv(config, relative_uri_csv)
         check_delay_propogation(
             config, dataframe, dataframe[dataframe["incident"] == True], relative_uri_csv)
+    print_statistics(config)
