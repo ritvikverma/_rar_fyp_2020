@@ -2,6 +2,24 @@ import json
 import pandas as pd
 from datetime import timedelta
 
+station_list = [("Whampoa", "WHA")
+                ("Ho Man Tin", "HOM")
+                ("Yau Ma Tei", "YMT")
+                ("Mong Kok", "MOK")
+                ("Prince Edward", "PRE")
+                ("Shek Kip Mei", "SKM")
+                ("Kowloon Tong", "KOT")
+                ("Lok Fu", "LOF")
+                ("Wong Tai Sin", "WTS")
+                ("Diamond Hill", "DIH")
+                ("Choi Hung", "CHH")
+                ("Kowloon Bay", "KOB")
+                ("Ngau Tau Kok", "NTK")
+                ("Kwun Tong", "KWT")
+                ("Lam Tin", "LAT")
+                ("Yau Tong", "YAT")
+                ("Tiu Keng Leng", "TIK")]
+
 
 def format_date_json(event_time):
     event_time = event_time.split("/")
@@ -58,3 +76,21 @@ def update_SICP_row(dataframe, columns_added, index, added_tuple):
     for i in range(len(columns_added)):
         dataframe.at[index,
                      columns_added[i]] = added_tuple[i]
+
+
+def find_station_index(station):
+    for i in range(len(station_list)):
+        if station_list[i][1] == station:
+            return i
+    return -1
+
+
+def get_next_prev_station(station):
+    index = find_station_index(station)
+    if index != -1:
+        return None
+    if index == 0:
+        return [station_list[index][1], station_list[index + 1][1]]
+    if index == len(station_list) - 1:
+        return [station_list[index - 1][1], station_list[index][1]]
+    return [station_list[index - 1][1], station_list[index][1], station_list[index + 1][1]]

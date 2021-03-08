@@ -2,7 +2,7 @@ import json
 import os
 import pandas as pd
 
-from utils import get_datetime_mask, check_quantile_track, initialize_quantile_dicts, update_SICP_row
+from utils import get_datetime_mask, check_quantile_track, initialize_quantile_dicts, update_SICP_row, get_next_prev_station
 
 
 def initialize_variables():
@@ -22,8 +22,9 @@ def initialize_variables():
     config["list_of_quant_dicts"] = initialize_quantile_dicts(config)
 
     # Column being added to the CSV files
-    config["columns_added"] = ("incident", "quantile", "fault_description")
-    config["columns_added_default_value"] = (False, 0, "")
+    config["columns_added"] = (
+        "incident", "quantile", "fault_description", "propagated")
+    config["columns_added_default_value"] = (False, 0, "", True)
     config["count_for_each"] = ()
     config["total_count"] = ()
     config["dir_name"] = ()
@@ -98,7 +99,7 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                         )
 
                         name_mask = get_name_mask(dataframe, str(train_number))
-
+                        station_mask = get_next_prev_station(station)
                         query = dataframe.index[
                             name_mask & datetime_mask
                         ].sort_values(["act_arr_time"])
