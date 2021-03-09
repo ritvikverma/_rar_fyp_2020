@@ -1,6 +1,6 @@
-import string
 import json
 import os
+import string
 from collections import Counter
 
 relative_uri_accidents_records = os.path.join("..", "accidents_record", "logs")
