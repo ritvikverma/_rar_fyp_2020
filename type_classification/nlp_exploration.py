@@ -1,6 +1,5 @@
 import json
 import os
-import string
 from collections import Counter
 
 relative_uri_accidents_records = os.path.join("../accidents_record", "logs")
@@ -16,16 +15,20 @@ def populate_accidents_dict():
 
 def preprocess(description):
     description = description.lower()
-    description = description.translate(str.maketrans(
-        "", "", string.punctuation))
+    # Punctuation removal if required for specific event description
+    # description = description.translate(str.maketrans(
+    #     "", "", string.punctuation))
     description = description.strip()
-    description = tuple(description.split())
+    # If specific event description, uncomment. Need word wise split.
+    # description = tuple(description.split())
     return description
 
 
 def get_count_data(text_descriptions):
     returnable = list(map(preprocess, text_descriptions))
-    returnable = {" ".join(k): v for k, v in Counter(returnable).items()}
+    # This is if we have specific event description
+    # returnable = {" ".join(k): v for k, v in Counter(returnable).items()}
+    returnable = {k: v for k, v in Counter(returnable).items()}
     return returnable
 
 
