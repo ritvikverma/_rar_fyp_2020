@@ -30,18 +30,24 @@ def get_count_data(text_descriptions):
 
 
 if __name__ == '__main__':
+    # Fill in the dictionary for events through accidents_record/logs
     populate_accidents_dict()
+    # Initialise list for descriptions
     text_descriptions = []
     for day, events in accident_jsons.items():
         for event in events:
+            # We only count those events that have trains. Iteration because a single event may have many instances
             has_train_in_any_event = False
             for desc in event['event_descriptions']:
                 if desc['Train No'].strip() != "":
                     has_train_in_any_event = True
             if has_train_in_any_event:
-                text_descriptions.append(event["Fault Description"])
+                # Can change to "Fault Description" if you want the specific event
+                text_descriptions.append(event["Allocation"])
+    # Get counts for each event classification
     repeated_dict = get_count_data(text_descriptions)
+    # Sort by counts
     repeated_dict = dict(sorted(repeated_dict.items(), key=lambda x: x[1]))
-    print(len(repeated_dict))
+    # Print in reverse
     for k, v in reversed(repeated_dict.items()):
         print(v, k)
