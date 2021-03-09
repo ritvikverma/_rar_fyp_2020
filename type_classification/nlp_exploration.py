@@ -14,7 +14,8 @@ def populate_accidents_dict():
 
 
 def preprocess(description):
-    description = description.lower()
+    # Capital removal if specific event description
+    # description = description.lower()
     # Punctuation removal if required for specific event description
     # description = description.translate(str.maketrans(
     #     "", "", string.punctuation))
