@@ -1,20 +1,31 @@
 import json
 import os
+from typing import Iterable
 import pandas as pd
+import numpy
+import re
 
-from utils import get_datetime_mask, check_quantile_track, initialize_quantile_dicts, update_SICP_row, get_next_prev_station
+from utils import (
+    get_datetime_mask,
+    check_quantile_track,
+    initialize_quantile_dicts,
+    update_SICP_row,
+    get_next_prev_station,
+)
 
 
 def initialize_variables():
     config = {}
     # Parameters to be edited
     config["quantile_column_being_checked"] = "act_travelling_time"
-    config["time_range"] = 1
+    config["time_range_minutes"] = 1
+    config["time_range_seconds"] = 60
 
     # URI for the files
     config["relative_uri_SICP"] = os.path.join("..", "SICP", "incident")
     config["relative_uri_accidents_records"] = os.path.join(
-        "..", "accidents_record", "logs", "TCSS ")
+        "..", "accidents_record", "logs", "TCSS "
+    )
     config["count_found_total"] = os.path.join("Misc", "count_found_total.txt")
 
     # For checking with all quantiles
@@ -23,7 +34,11 @@ def initialize_variables():
 
     # Column being added to the CSV files
     config["columns_added"] = (
-        "incident", "quantile", "fault_description", "propagated")
+        "incident",
+        "quantile",
+        "fault_description",
+        "propagated",
+    )
     config["columns_added_default_value"] = (False, 0, "", True)
     config["count_for_each"] = ()
     config["total_count"] = ()
@@ -52,14 +67,15 @@ def csv_file_name_to_json_file_name(dir_name):
 def read_csv(config, relative_uri):
     dataframe = pd.read_csv(relative_uri)
 
-    dataframe['destination_code_train'] = dataframe['train'].str[0]
-    dataframe['timetable_code_train'] = dataframe['train'].str[1]
-    dataframe['number_train'] = dataframe['train'].str[2:]
+    dataframe["destination_code_train"] = dataframe["train"].str[0]
+    dataframe["timetable_code_train"] = dataframe["train"].str[1]
+    dataframe["number_train"] = dataframe["train"].str[2:]
 
     for i in range(len(config["columns_added"])):
         if config["columns_added"][i] not in dataframe:
-            dataframe[config["columns_added"][i]
-                      ] = config["columns_added_default_value"][i]
+            dataframe[config["columns_added"][i]] = config[
+                "columns_added_default_value"
+            ][i]
 
     return dataframe
 
@@ -80,12 +96,63 @@ def get_quantile_mask(dataframe, col_name, quantile):
     raise Exception("incorrect input")
 
 
+def first_or_nothing(array):
+    if len(array) != 0:
+        return array[0]
+    return None
+
+
+def get_station(dataframe, config, name_mask, event_time):
+    datetime_mask = get_datetime_mask(
+        dataframe,
+        event_time,
+        "act_arr_time",
+        time_range_seconds=config["time_range_seconds"],
+        is_json_date=True,
+    )
+    dataframe = dataframe[name_mask & datetime_mask].sort_values(["act_arr_time"])
+    station = first_or_nothing(dataframe["station"].unique())
+    track = dataframe[dataframe["station"] == station]["track"]
+    return station, track.unique()
+
+
+def get_station_mask(dataframe, station):
+    stations = get_next_prev_station(station)
+    if station == None or None in stations:
+        # Should we make this all false?
+        return numpy.full((dataframe.shape[0],), True)
+    return dataframe["station"].isin(stations)
+
+
+def get_numbers(string):
+    return int(re.findall(r"[0-9]+", string)[0])
+
+
+def is_even(x):
+    return int(x) % 2 == 0
+
+
+def get_track_mask(dataframe, track):
+    even = False
+    if type(track) is int:
+        even = is_even(track)
+    else:
+        even = all([is_even(get_numbers(t)) for t in track])
+
+    train_numbers = dataframe["number_train"].apply(get_numbers)
+    if even:
+        return train_numbers % 2 == 0
+    else:
+        return train_numbers % 2 == 1
+
+
 # Detects the incidents for the passed file
 def detect_incidents(config, relative_uri_csv, relative_uri_json):
     dataframe = read_csv(config, relative_uri_csv)
     try:
         total = 0
         num_found = 0
+        none_found = []
         with open(relative_uri_json) as json_file:
             data = json.load(json_file)
             for event in data["events"]:
@@ -93,34 +160,66 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                 for desc in event["event_descriptions"]:
                     if desc["Train No"] != "":
                         train_number = desc["Train No"]
+                        train_number = str(train_number)
 
                         datetime_mask = get_datetime_mask(
-                            dataframe, desc["Event Time"], "act_arr_time", config["time_range"], is_json_date=True
+                            dataframe,
+                            desc["Event Time"],
+                            "act_arr_time",
+                            time_range_minutes=config["time_range_minutes"],
+                            is_json_date=True,
                         )
 
-                        name_mask = get_name_mask(dataframe, str(train_number))
-                        station_mask = get_next_prev_station(station)
+                        name_mask = get_name_mask(dataframe, train_number)
+                        station, track = get_station(
+                            dataframe, config, name_mask, desc["Event Time"]
+                        )
+
+                        # For debug
+                        if station == None or track.any(None):
+                            none_found.append((station, track))
+
+                        station_mask = get_station_mask(dataframe, station)
+                        track_mask = get_track_mask(dataframe, track)
+
                         query = dataframe.index[
-                            name_mask & datetime_mask
+                            station_mask & datetime_mask & track_mask
                         ].sort_values(["act_arr_time"])
 
                         incident_found = False
                         for index in query[0]:
                             is_incident, quantile = check_quantile_track(
-                                config["all_quantiles"], config["list_of_quant_dicts"], config["quantile_column_being_checked"], index, dataframe)
-                            added_tuple = (
-                                is_incident, quantile, fault_desc)
+                                config["all_quantiles"],
+                                config["list_of_quant_dicts"],
+                                config["quantile_column_being_checked"],
+                                index,
+                                dataframe,
+                            )
                             if is_incident:
+                                is_propagated = (
+                                    dataframe.iloc[index]["number_train"]
+                                    == train_number
+                                )
+                                added_tuple = (
+                                    is_incident,
+                                    quantile,
+                                    fault_desc,
+                                    is_propagated,
+                                )
                                 incident_found = True
                                 update_SICP_row(
-                                    dataframe, config["columns_added"], index, added_tuple)
+                                    dataframe,
+                                    config["columns_added"],
+                                    index,
+                                    added_tuple,
+                                )
                         if incident_found:
                             num_found += 1
                         total += 1
         if config["debug"]:
-            config["total_count"] += (total, )
-            config["count_for_each"] += (num_found, )
-            config["dir_name"] += (relative_uri_csv, )
+            config["total_count"] += (total,)
+            config["count_for_each"] += (num_found,)
+            config["dir_name"] += (relative_uri_csv,)
         dataframe.to_csv(relative_uri_csv, index=False)
     except os.error as e:
         print("File not found " + e.filename)
@@ -128,22 +227,33 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
 
 def write_count_found_total():
     with open(config["count_found_total"], "w") as f:
-        debug_arr = [(config["dir_name"][i], config["count_for_each"][i], config["total_count"][i]) for i in range(
-            min(len(config["count_for_each"]), len(config["total_count"])))]
+        debug_arr = [
+            (
+                config["dir_name"][i],
+                config["count_for_each"][i],
+                config["total_count"][i],
+            )
+            for i in range(
+                min(len(config["count_for_each"]), len(config["total_count"]))
+            )
+        ]
         for dirname, found, total in debug_arr:
             f.write(
-                f"{dirname}\n Incidents Tagged {found}\n Total Incidents {total}\n Percentage : {found/total * 100}%\n\n")
+                f"{dirname}\n Incidents Tagged {found}\n Total Incidents {total}\n Percentage : {found/total * 100}%\n\n"
+            )
 
 
 def print_results():
     print(config["total_count"])
     print(config["count_for_each"])
     print("Total number of files processed: " + str(count))
-    print("Match Percentage:" +
-          str((sum(config["count_for_each"]) / sum(config["total_count"])) * 100))
+    print(
+        "Match Percentage:"
+        + str((sum(config["count_for_each"]) / sum(config["total_count"])) * 100)
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     config = initialize_variables()
     # Iterates through every SICP  file
     count = 0

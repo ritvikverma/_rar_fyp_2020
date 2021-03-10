@@ -99,7 +99,7 @@ def find_station_index(station):
 
 def get_next_prev_station(station):
     index = find_station_index(station)
-    if index != -1:
+    if index == -1:
         return None
     if index == 0:
         return [station_list[index][1], station_list[index + 1][1]]
