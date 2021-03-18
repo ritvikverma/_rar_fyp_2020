@@ -98,13 +98,3 @@ def get_abr_station_list():
 
 def find_station_index(station):
     return get_abr_station_list().index(station)
-
-
-def get_next_prev_station(station):
-    if len(station) == 1:
-        index = find_station_index(station[0])
-        return station_list[max(index - 1, 0):max(len(station_list) - 1, index + 1)][1]
-    else:
-        index1 = find_station_index(station[0])
-        index2 = find_station_index(station[-1])
-        return station_list[max(index1 - 1, 0):max(len(station_list) - 1, index2 + 1)][1]

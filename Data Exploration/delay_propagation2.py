@@ -10,8 +10,6 @@ from utils import (
     check_quantile_track,
     initialize_quantile_dicts,
     update_SICP_row,
-    get_next_prev_station,
-    station_list,
     get_abr_station_list
 )
 
@@ -122,11 +120,9 @@ def get_station_SICP(dataframe, config, name_mask, event_time):
     return dataframe["station"].unique()
 
 
-def get_station_mask(dataframe, station):
-    if len(station) == 0:
+def get_station_mask(dataframe, stations):
+    if len(stations) == 0:
         return numpy.full((dataframe.shape[0],), True)
-    else:
-        stations = get_next_prev_station(station)
     return dataframe["station"].isin(stations)
 
 
@@ -161,10 +157,15 @@ def fill_station_in_range(station1, station2):
     station_abr_list = get_abr_station_list()
     index1 = station_abr_list.index(station1)
     index2 = station_abr_list.index(station2)
-    # print(station1, station2)
-    # print(index1, min(index2 + 1, len(station_abr_list) - 1))
-    # input()
-    return station_abr_list[index1:index2]
+    #Get prev and next station
+    if index1 < index2:
+        index1 -= 1
+        index2 += 2
+        return station_abr_list[max(0, index1):min(index2, len(station_abr_list))]
+    else:
+        index2 -= 1
+        index1 += 2
+        return station_abr_list[max(0, index2):min(index1, len(station_abr_list))]
 
 
 # Detects the incidents for the passed file
@@ -196,22 +197,18 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                         incident_station = station_in_station_list(
                             desc['Location'])
                         if len(incident_station) == 0:
-                            station = get_station_SICP(
+                            stations = get_station_SICP(
                                 dataframe, config, name_mask, desc["Event Time"]
                             )
                         elif len(incident_station) == 1:
-                            station = incident_station
+                            stations = incident_station
                         else:
-                            station = fill_station_in_range(
+                            stations = fill_station_in_range(
                                 incident_station[0], incident_station[-1])
 
-                        # print(incident_station)
-                        # print(station)
-                        # print()
+                        station_mask = get_station_mask(dataframe, stations)
 
-                        station_mask = get_station_mask(dataframe, station)
-
-                        track = get_track_from_station(dataframe, station)
+                        track = get_track_from_station(dataframe, stations)
                         track_mask = get_track_mask(dataframe, track)
 
                         query = dataframe.index[
