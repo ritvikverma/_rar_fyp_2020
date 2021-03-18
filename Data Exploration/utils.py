@@ -1,4 +1,5 @@
 import json
+from numpy.lib import index_tricks
 import pandas as pd
 from datetime import timedelta
 
@@ -55,7 +56,8 @@ def get_datetime_mask(
     if is_json_date:
         event_time = format_date_json(incident_event_time)
     else:
-        event_time = pd.to_datetime(incident_event_time, format=SICP_date_format)
+        event_time = pd.to_datetime(
+            incident_event_time, format=SICP_date_format)
     start_date = event_time - timedelta(
         minutes=time_range_minutes, seconds=time_range_seconds
     )
@@ -90,23 +92,19 @@ def update_SICP_row(dataframe, columns_added, index, added_tuple):
         dataframe.at[index, columns_added[i]] = added_tuple[i]
 
 
+def get_abr_station_list():
+    return [station[1] for station in station_list]
+
+
 def find_station_index(station):
-    for i in range(len(station_list)):
-        if station_list[i][1] == station:
-            return i
-    return -1
+    return get_abr_station_list().index(station)
 
 
 def get_next_prev_station(station):
-    index = find_station_index(station)
-    if index == -1:
-        return None
-    if index == 0:
-        return [station_list[index][1], station_list[index + 1][1]]
-    if index == len(station_list) - 1:
-        return [station_list[index - 1][1], station_list[index][1]]
-    return [
-        station_list[index - 1][1],
-        station_list[index][1],
-        station_list[index + 1][1],
-    ]
+    if len(station) == 1:
+        index = find_station_index(station[0])
+        return station_list[max(index - 1, 0):max(len(station_list) - 1, index + 1)][1]
+    else:
+        index1 = find_station_index(station[0])
+        index2 = find_station_index(station[-1])
+        return station_list[max(index1 - 1, 0):max(len(station_list) - 1, index2 + 1)][1]

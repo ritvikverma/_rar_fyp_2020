@@ -11,6 +11,8 @@ from utils import (
     initialize_quantile_dicts,
     update_SICP_row,
     get_next_prev_station,
+    station_list,
+    get_abr_station_list
 )
 
 
@@ -102,7 +104,12 @@ def first_or_nothing(array):
     return None
 
 
-def get_station(dataframe, config, name_mask, event_time):
+def get_track_from_station(dataframe, station):
+    track = dataframe[dataframe["station"].isin(station)]["track"]
+    return track.unique()
+
+
+def get_station_SICP(dataframe, config, name_mask, event_time):
     datetime_mask = get_datetime_mask(
         dataframe,
         event_time,
@@ -110,17 +117,16 @@ def get_station(dataframe, config, name_mask, event_time):
         time_range_seconds=config["time_range_seconds"],
         is_json_date=True,
     )
-    dataframe = dataframe[name_mask & datetime_mask].sort_values(["act_arr_time"])
-    station = first_or_nothing(dataframe["station"].unique())
-    track = dataframe[dataframe["station"] == station]["track"]
-    return station, track.unique()
+    dataframe = dataframe[name_mask &
+                          datetime_mask].sort_values(["act_arr_time"])
+    return dataframe["station"].unique()
 
 
 def get_station_mask(dataframe, station):
-    stations = get_next_prev_station(station)
-    if station == None or None in stations:
-        # Should we make this all false?
+    if len(station) == 0:
         return numpy.full((dataframe.shape[0],), True)
+    else:
+        stations = get_next_prev_station(station)
     return dataframe["station"].isin(stations)
 
 
@@ -146,13 +152,27 @@ def get_track_mask(dataframe, track):
         return train_numbers % 2 == 1
 
 
+def station_in_station_list(incident_location):
+    station_abr_list = get_abr_station_list()
+    return list(filter(lambda x: x in station_abr_list, incident_location.split()))
+
+
+def fill_station_in_range(station1, station2):
+    station_abr_list = get_abr_station_list()
+    index1 = station_abr_list.index(station1)
+    index2 = station_abr_list.index(station2)
+    # print(station1, station2)
+    # print(index1, min(index2 + 1, len(station_abr_list) - 1))
+    # input()
+    return station_abr_list[index1:index2]
+
+
 # Detects the incidents for the passed file
 def detect_incidents(config, relative_uri_csv, relative_uri_json):
     dataframe = read_csv(config, relative_uri_csv)
     try:
         total = 0
         num_found = 0
-        none_found = []
         with open(relative_uri_json) as json_file:
             data = json.load(json_file)
             for event in data["events"]:
@@ -171,15 +191,27 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                         )
 
                         name_mask = get_name_mask(dataframe, train_number)
-                        station, track = get_station(
-                            dataframe, config, name_mask, desc["Event Time"]
-                        )
 
-                        # For debug
-                        if station == None or track.any(None):
-                            none_found.append((station, track))
+                        # Get station logic
+                        incident_station = station_in_station_list(
+                            desc['Location'])
+                        if len(incident_station) == 0:
+                            station = get_station_SICP(
+                                dataframe, config, name_mask, desc["Event Time"]
+                            )
+                        elif len(incident_station) == 1:
+                            station = incident_station
+                        else:
+                            station = fill_station_in_range(
+                                incident_station[0], incident_station[-1])
+
+                        # print(incident_station)
+                        # print(station)
+                        # print()
 
                         station_mask = get_station_mask(dataframe, station)
+
+                        track = get_track_from_station(dataframe, station)
                         track_mask = get_track_mask(dataframe, track)
 
                         query = dataframe.index[
@@ -225,31 +257,14 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
         print("File not found " + e.filename)
 
 
-def write_count_found_total():
-    with open(config["count_found_total"], "w") as f:
-        debug_arr = [
-            (
-                config["dir_name"][i],
-                config["count_for_each"][i],
-                config["total_count"][i],
-            )
-            for i in range(
-                min(len(config["count_for_each"]), len(config["total_count"]))
-            )
-        ]
-        for dirname, found, total in debug_arr:
-            f.write(
-                f"{dirname}\n Incidents Tagged {found}\n Total Incidents {total}\n Percentage : {found/total * 100}%\n\n"
-            )
-
-
 def print_results():
     print(config["total_count"])
     print(config["count_for_each"])
     print("Total number of files processed: " + str(count))
     print(
         "Match Percentage:"
-        + str((sum(config["count_for_each"]) / sum(config["total_count"])) * 100)
+        + str((sum(config["count_for_each"]) /
+               sum(config["total_count"])) * 100)
     )
 
 
@@ -265,5 +280,4 @@ if __name__ == "__main__":
             detect_incidents(config, relative_uri_csv, relative_uri_json)
             count += 1
     if config["debug"]:
-        write_count_found_total()
         print_results()
