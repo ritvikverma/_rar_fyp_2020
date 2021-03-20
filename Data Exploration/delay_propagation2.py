@@ -21,7 +21,7 @@ def initialize_variables():
     config["count_found_total"] = os.path.join("Misc", "count_found_total.txt")
 
     # For checking with all quantiles
-    config["all_quantiles"] = get_quantile_range(95, 70, -1)
+    config["all_quantiles"] = get_quantile_range(100, 70, -1)
     config["list_of_quant_dicts"] = initialize_quantile_dicts(config)
 
     # Column being added to the CSV files
@@ -29,7 +29,7 @@ def initialize_variables():
         "incident",
         "quantile",
         "fault_description",
-        "fault_classification"
+        "fault_classification",
         "propagated",
     )
     config["columns_added_default_value"] = (False, 0, "", "", True)

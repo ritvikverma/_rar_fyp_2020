@@ -9,7 +9,7 @@ from utils import *
 relative_uri_SICP = os.path.join("..", "SICP", "incident")
 relative_uri_json = ""
 quantile_per_station_track = {}
-quantiles = [quantile / 100 for quantile in get_quantile_range(95, 70, -1)]
+quantiles = [quantile / 100 for quantile in get_quantile_range(100, 70, -1)]
 quantile_columns = ["act_travelling_time", "act_occupied_time"]
 
 
