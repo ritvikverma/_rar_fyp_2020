@@ -1,17 +1,9 @@
-import json
 import os
-from typing import Iterable
-import pandas as pd
-import numpy
 import re
 
-from utils import (
-    get_datetime_mask,
-    check_quantile_track,
-    initialize_quantile_dicts,
-    update_SICP_row,
-    get_abr_station_list
-)
+import numpy
+
+from utils import *
 
 
 def initialize_variables():
@@ -29,7 +21,7 @@ def initialize_variables():
     config["count_found_total"] = os.path.join("Misc", "count_found_total.txt")
 
     # For checking with all quantiles
-    config["all_quantiles"] = (95, 90, 85, 80, 75, 70)
+    config["all_quantiles"] = get_quantile_range(95, 70, -1)
     config["list_of_quant_dicts"] = initialize_quantile_dicts(config)
 
     # Column being added to the CSV files
@@ -37,9 +29,10 @@ def initialize_variables():
         "incident",
         "quantile",
         "fault_description",
+        "fault_classification"
         "propagated",
     )
-    config["columns_added_default_value"] = (False, 0, "", True)
+    config["columns_added_default_value"] = (False, 0, "", "", True)
     config["count_for_each"] = ()
     config["total_count"] = ()
     config["dir_name"] = ()
@@ -178,6 +171,7 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
             data = json.load(json_file)
             for event in data["events"]:
                 fault_desc = event["Fault Description"]
+                fault_classification = event["Allocation"]
                 for desc in event["event_descriptions"]:
                     if desc["Train No"] != "":
                         train_number = desc["Train No"]
@@ -233,6 +227,7 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                                     is_incident,
                                     quantile,
                                     fault_desc,
+                                    fault_classification,
                                     is_propagated,
                                 )
                                 incident_found = True

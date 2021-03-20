@@ -1,7 +1,7 @@
 import json
-from numpy.lib import index_tricks
-import pandas as pd
 from datetime import timedelta
+
+import pandas as pd
 
 station_list = [
     ("Whampoa", "WHA"),
@@ -26,6 +26,13 @@ station_list = [
 SICP_date_format = "%Y-%m-%d %H:%M:%S.%f"
 
 
+def get_quantile_range(up, down, jump):
+    """ Range is [up, down] """
+    if jump > 0:
+        raise Exception("Jump should be negative only")
+    return tuple(range(up, down - 1, jump))
+
+
 def format_date_json(event_time):
     event_time = event_time.split("/")
     event_time[-1] = "20" + event_time[-1]
@@ -46,12 +53,12 @@ def initialize_quantile_dicts(config):
 
 # Creates the date mask corresponding to the event time
 def get_datetime_mask(
-    dataframe,
-    incident_event_time,
-    col_name,
-    time_range_minutes=0,
-    time_range_seconds=0,
-    is_json_date=False,
+        dataframe,
+        incident_event_time,
+        col_name,
+        time_range_minutes=0,
+        time_range_seconds=0,
+        is_json_date=False,
 ):
     if is_json_date:
         event_time = format_date_json(incident_event_time)
@@ -73,7 +80,7 @@ def get_datetime_mask(
 
 # Calculates the quantile for every track and station pair
 def check_quantile_track(
-    all_quantiles, list_of_quant_dicts, column_being_checked, index, dataframe
+        all_quantiles, list_of_quant_dicts, column_being_checked, index, dataframe
 ):
     track_no = dataframe.loc[[index], "track"].values[0]
     station = dataframe.loc[[index], "station"].values[0]

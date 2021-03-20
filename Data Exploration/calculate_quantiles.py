@@ -1,16 +1,15 @@
-import json
-import os
 import math
+import os
 
 import numpy as np
-from numpy.core.numeric import NaN
-import pandas as pd
+
+from utils import *
 
 # URI for the files
 relative_uri_SICP = os.path.join("..", "SICP", "incident")
 relative_uri_json = ""
 quantile_per_station_track = {}
-quantiles = [.95, .90, .85, .80, .75, .70]
+quantiles = [quantile / 100 for quantile in get_quantile_range(95, 70, -1)]
 quantile_columns = ["act_travelling_time", "act_occupied_time"]
 
 
