@@ -41,14 +41,18 @@ def format_date_json(event_time):
 
 
 def initialize_quantile_dicts(config):
-    list_of_quant_dicts = ()
-    for x in config["all_quantiles"]:
-        file_name = (
-            f"Quantiles/{config['quantile_column_being_checked']}_quantile_{x}.json"
-        )
-        f = open(file_name)
-        list_of_quant_dicts += (json.load(f),)
-    return list_of_quant_dicts
+    column_quantile_dicts = ()
+    for i in range(len(config['quantile_columns_being_checked'])):
+        list_of_quant_dicts = ()
+        column = config['quantile_columns_being_checked'][i]
+        for x in config["all_quantiles"]:
+            file_name = (
+                f"Quantiles/{column}_quantile_{x}.json"
+            )
+            f = open(file_name)
+            list_of_quant_dicts += (json.load(f),)
+        column_quantile_dicts += (list_of_quant_dicts, )
+    return column_quantile_dicts
 
 
 # Creates the date mask corresponding to the event time
@@ -80,7 +84,7 @@ def get_datetime_mask(
 
 # Calculates the quantile for every track and station pair
 def check_quantile_track(
-        all_quantiles, list_of_quant_dicts, column_being_checked, index, dataframe
+        all_quantiles, list_of_quant_dicts, columns_being_checked, index, dataframe
 ):
     track_no = dataframe.loc[[index], "track"].values[0]
     station = dataframe.loc[[index], "station"].values[0]
@@ -88,7 +92,7 @@ def check_quantile_track(
 
     for i, value in enumerate(all_quantiles):
         quantile_value = list_of_quant_dicts[i][track_station_pair]
-        row_value = dataframe.loc[[index], column_being_checked].values[0]
+        row_value = dataframe.loc[[index], columns_being_checked].values[0]
         if row_value >= quantile_value:
             return (True, value)
     return (False, 0)
