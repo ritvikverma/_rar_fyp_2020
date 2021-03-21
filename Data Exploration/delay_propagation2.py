@@ -1,15 +1,18 @@
+from utils import *
 import os
 import re
-
+import pandas as pd
 import numpy
-
-from utils import *
+import logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 
 def initialize_variables():
     config = {}
     # Parameters to be edited
-    config["quantile_column_being_checked"] = "act_travelling_time"
+    config["quantile_columns_being_checked"] = (
+        "act_travelling_time", "act_occupied_time")
     config["time_range_minutes"] = 1
     config["time_range_seconds"] = 60
 
@@ -21,18 +24,22 @@ def initialize_variables():
     config["count_found_total"] = os.path.join("Misc", "count_found_total.txt")
 
     # For checking with all quantiles
-    config["all_quantiles"] = get_quantile_range(100, 70, -1)
+    config["all_quantiles"] = get_quantile_range(100, 70, -5)
     config["list_of_quant_dicts"] = initialize_quantile_dicts(config)
 
     # Column being added to the CSV files
     config["columns_added"] = (
         "incident",
-        "quantile",
         "fault_description",
         "fault_classification",
         "propagated",
     )
-    config["columns_added_default_value"] = (False, 0, "", "", True)
+    config["columns_added"] += tuple(
+        [f"{column}_quantile" for column in config["quantile_columns_being_checked"]])
+
+    config["columns_added_default_value"] = (False, "", "", True)
+    config["columns_added_default_value"] += tuple([
+        0 for column in config["quantile_columns_being_checked"]])
     config["count_for_each"] = ()
     config["total_count"] = ()
     config["dir_name"] = ()
@@ -150,7 +157,7 @@ def fill_station_in_range(station1, station2):
     station_abr_list = get_abr_station_list()
     index1 = station_abr_list.index(station1)
     index2 = station_abr_list.index(station2)
-    #Get prev and next station
+    # Get prev and next station
     if index1 < index2:
         index1 -= 1
         index2 += 2
@@ -211,13 +218,20 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
 
                         incident_found = False
                         for index in query[0]:
-                            is_incident, quantile = check_quantile_track(
-                                config["all_quantiles"],
-                                config["list_of_quant_dicts"],
-                                config["quantile_column_being_checked"],
-                                index,
-                                dataframe,
-                            )
+                            is_incident = False
+                            quantile = ()
+                            for i in range(len(config["quantile_columns_being_checked"])):
+                                column = config["quantile_columns_being_checked"][i]
+                                column_is_incident, column_quantile = check_quantile_track(
+                                    config["all_quantiles"],
+                                    config["list_of_quant_dicts"][i],
+                                    column,
+                                    index,
+                                    dataframe,
+                                )
+                                quantile += (column_quantile, )
+                                if column_is_incident:
+                                    is_incident = True
                             if is_incident:
                                 is_propagated = (
                                     dataframe.iloc[index]["number_train"]
@@ -225,11 +239,11 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
                                 )
                                 added_tuple = (
                                     is_incident,
-                                    quantile,
                                     fault_desc,
                                     fault_classification,
                                     is_propagated,
                                 )
+                                added_tuple += quantile
                                 incident_found = True
                                 update_SICP_row(
                                     dataframe,
@@ -244,7 +258,7 @@ def detect_incidents(config, relative_uri_csv, relative_uri_json):
             config["total_count"] += (total,)
             config["count_for_each"] += (num_found,)
             config["dir_name"] += (relative_uri_csv,)
-        dataframe.to_csv(relative_uri_csv, index=False)
+        # dataframe.to_csv(relative_uri_csv, index=False)
     except os.error as e:
         print("File not found " + e.filename)
 
@@ -266,10 +280,13 @@ if __name__ == "__main__":
     count = 0
     for dir_name in os.listdir(config["relative_uri_SICP"]):
         relative_uri_csv = config["relative_uri_SICP"] + "/" + dir_name
-        json_file = csv_file_name_to_json_file_name(dir_name)
-        if json_file is not None:
-            relative_uri_json = config["relative_uri_accidents_records"] + json_file
-            detect_incidents(config, relative_uri_csv, relative_uri_json)
-            count += 1
+        try:
+            json_file = csv_file_name_to_json_file_name(dir_name)
+            if json_file is not None:
+                relative_uri_json = config["relative_uri_accidents_records"] + json_file
+                detect_incidents(config, relative_uri_csv, relative_uri_json)
+                count += 1
+        except Exception as e:
+            logger.exception(e)
     if config["debug"]:
         print_results()
