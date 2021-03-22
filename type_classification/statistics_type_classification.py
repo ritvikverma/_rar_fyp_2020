@@ -117,5 +117,6 @@ def import_accumulated_incidents():
 
 
 if __name__ == "__main__":
+    # accumulate_dataframes()
     accumulated_df = import_accumulated_incidents()
     analyse(accumulated_df)
