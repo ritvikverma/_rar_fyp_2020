@@ -73,6 +73,8 @@ def read_csv(config, relative_uri):
     dataframe["destination_code_train"] = dataframe["train"].str[0]
     dataframe["timetable_code_train"] = dataframe["train"].str[1]
     dataframe["number_train"] = dataframe["train"].str[2:]
+    dataframe["arr_delay"] = dataframe["arr_delay"].interpolate()
+    dataframe["dep_delay"] = dataframe["dep_delay"].interpolate()
 
     for i in range(len(config["columns_added"])):
         if config["columns_added"][i] not in dataframe:
