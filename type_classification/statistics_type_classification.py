@@ -5,13 +5,14 @@ import numpy as np
 
 from utils import *
 
-plt.figure(figsize=(20, 3))  # width:20, height:3
 classification_average_percentile_dict = {}
 
 configuration = {"relative_uri_SICP": os.path.join("..", "SICP", "incident"),
                  "relative_uri_accumulation": os.path.join("..", "SICP", "incident", "accumulated_incidents.csv"),
                  "debug": True}
 
+removable_classes = {'TS', 'RS/PUB', 'S&T/RS', 'SI', 'PUB/RS', 'RS/TBD/S&T', 'PUB/EXT', 'RS/TBD', 'RS/TS/TBD',
+                     'S&T/TBD/RS', 'PD', 'OCC/PUB/TS', 'PSD/PUB', 'PUB/RS/PW', 'PSD/S&T/TBD', 'PUB/S&T'}
 
 def clean_df(df):
     return df[df['incident']]
@@ -34,15 +35,17 @@ def draw_bar_plot(min, max, avg):
         averages.append(value)
 
     x = np.arange(len(labels))  # the label locations
-    width = 0.35  # the width of the bars
+    width = 0.2  # the width of the bars
 
-    fig, ax = plt.subplots()
-    rects1 = ax.bar(x - width / 2, minimums, width, label='Minimums')
-    rects2 = ax.bar(x + width / 2, maximums, width, label='Maximums')
+    fig, ax = plt.subplots(figsize=(16, 8))
+    min_rects = ax.bar(x - width, minimums, width, label='Minimum')
+    average_rects = ax.bar(x, averages, width, label='Average')
+    max_rects = ax.bar(x + width, maximums, width, label='Maximum')
 
     # Add some text for labels, title and custom x-axis tick labels, etc.
+    ax.set_title('Percentile of travelling times for incidents against incident class, sorted by average')
     ax.set_ylabel('Percentile of travelling times')
-    ax.set_title('Scores by group and gender')
+    ax.set_xlabel('MTR\'s incident classification')
     ax.set_xticks(x)
     ax.set_xticklabels(labels)
     ax.legend()
@@ -57,12 +60,27 @@ def draw_bar_plot(min, max, avg):
                         textcoords="offset points",
                         ha='center', va='bottom')
 
-    autolabel(rects1)
-    autolabel(rects2)
+    autolabel(min_rects)
+    autolabel(average_rects)
+    autolabel(max_rects)
 
     fig.tight_layout()
-
     plt.show()
+
+
+def limit_float(value):
+    return round(value)
+
+
+def preprocess(preprocessable):
+    # Removing unnecessary keys
+    for key in removable_classes:
+        if key in preprocessable:
+            preprocessable.pop(key)
+
+    preprocessable = {k: limit_float(v) for k, v in preprocessable.items()}
+
+    return preprocessable
 
 
 def analyse(df):
@@ -70,6 +88,12 @@ def analyse(df):
     fault_classification_quantile_min = dict(grouped_by_fault_classification['quantile'].min())
     fault_classification_quantile_max = dict(grouped_by_fault_classification['quantile'].max())
     fault_classification_quantile_average = dict(grouped_by_fault_classification['quantile'].mean())
+    fault_classification_quantile_min = preprocess(fault_classification_quantile_min)
+    fault_classification_quantile_average = preprocess(fault_classification_quantile_average)
+    fault_classification_quantile_max = preprocess(fault_classification_quantile_max)
+    print(fault_classification_quantile_min)
+    print(fault_classification_quantile_max)
+    print(fault_classification_quantile_average)
     draw_bar_plot(fault_classification_quantile_min, fault_classification_quantile_max,
                   fault_classification_quantile_average)
 
