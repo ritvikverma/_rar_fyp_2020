@@ -1,0 +1,295 @@
+../SICP/incident/31Dec19.csv
+ Incidents Tagged 5
+ Total Incidents 10
+ Percentage : 50.0%
+
+../SICP/incident/30Dec19.csv
+ Incidents Tagged 12
+ Total Incidents 13
+ Percentage : 92.3076923076923%
+
+../SICP/incident/22Nov19.csv
+ Incidents Tagged 16
+ Total Incidents 19
+ Percentage : 84.21052631578947%
+
+../SICP/incident/23Nov19.csv
+ Incidents Tagged 2
+ Total Incidents 3
+ Percentage : 66.66666666666666%
+
+../SICP/incident/16Nov19.csv
+ Incidents Tagged 3
+ Total Incidents 15
+ Percentage : 20.0%
+
+../SICP/incident/28Nov19.csv
+ Incidents Tagged 8
+ Total Incidents 12
+ Percentage : 66.66666666666666%
+
+../SICP/incident/29Nov19.csv
+ Incidents Tagged 9
+ Total Incidents 12
+ Percentage : 75.0%
+
+../SICP/incident/05Dec19.csv
+ Incidents Tagged 11
+ Total Incidents 15
+ Percentage : 73.33333333333333%
+
+../SICP/incident/04Dec19.csv
+ Incidents Tagged 11
+ Total Incidents 12
+ Percentage : 91.66666666666666%
+
+../SICP/incident/27Dec19.csv
+ Incidents Tagged 9
+ Total Incidents 13
+ Percentage : 69.23076923076923%
+
+../SICP/incident/18Dec19.csv
+ Incidents Tagged 8
+ Total Incidents 9
+ Percentage : 88.88888888888889%
+
+../SICP/incident/19Dec19.csv
+ Incidents Tagged 13
+ Total Incidents 15
+ Percentage : 86.66666666666667%
+
+../SICP/incident/01Nov19.csv
+ Incidents Tagged 8
+ Total Incidents 9
+ Percentage : 88.88888888888889%
+
+../SICP/incident/12Dec19.csv
+ Incidents Tagged 11
+ Total Incidents 14
+ Percentage : 78.57142857142857%
+
+../SICP/incident/13Dec19.csv
+ Incidents Tagged 11
+ Total Incidents 13
+ Percentage : 84.61538461538461%
+
+../SICP/incident/21Dec19.csv
+ Incidents Tagged 11
+ Total Incidents 12
+ Percentage : 91.66666666666666%
+
+../SICP/incident/20Dec19.csv
+ Incidents Tagged 10
+ Total Incidents 11
+ Percentage : 90.9090909090909%
+
+../SICP/incident/06Nov19.csv
+ Incidents Tagged 17
+ Total Incidents 21
+ Percentage : 80.95238095238095%
+
+../SICP/incident/07Nov19.csv
+ Incidents Tagged 6
+ Total Incidents 7
+ Percentage : 85.71428571428571%
+
+../SICP/incident/15Dec19.csv
+ Incidents Tagged 7
+ Total Incidents 8
+ Percentage : 87.5%
+
+../SICP/incident/14Dec19.csv
+ Incidents Tagged 7
+ Total Incidents 9
+ Percentage : 77.77777777777779%
+
+../SICP/incident/25Nov19.csv
+ Incidents Tagged 14
+ Total Incidents 19
+ Percentage : 73.68421052631578%
+
+../SICP/incident/24Nov19.csv
+ Incidents Tagged 5
+ Total Incidents 6
+ Percentage : 83.33333333333334%
+
+../SICP/incident/08Dec19.csv
+ Incidents Tagged 5
+ Total Incidents 6
+ Percentage : 83.33333333333334%
+
+../SICP/incident/09Dec19.csv
+ Incidents Tagged 17
+ Total Incidents 20
+ Percentage : 85.0%
+
+../SICP/incident/11Nov19.csv
+ Incidents Tagged 5
+ Total Incidents 6
+ Percentage : 83.33333333333334%
+
+../SICP/incident/10Nov19.csv
+ Incidents Tagged 13
+ Total Incidents 17
+ Percentage : 76.47058823529412%
+
+../SICP/incident/02Dec19.csv
+ Incidents Tagged 12
+ Total Incidents 14
+ Percentage : 85.71428571428571%
+
+../SICP/incident/03Dec19.csv
+ Incidents Tagged 15
+ Total Incidents 16
+ Percentage : 93.75%
+
+../SICP/incident/02Nov19.csv
+ Incidents Tagged 12
+ Total Incidents 13
+ Percentage : 92.3076923076923%
+
+../SICP/incident/03Nov19.csv
+ Incidents Tagged 4
+ Total Incidents 5
+ Percentage : 80.0%
+
+../SICP/incident/11Dec19.csv
+ Incidents Tagged 5
+ Total Incidents 6
+ Percentage : 83.33333333333334%
+
+../SICP/incident/10Dec19.csv
+ Incidents Tagged 10
+ Total Incidents 13
+ Percentage : 76.92307692307693%
+
+../SICP/incident/08Nov19.csv
+ Incidents Tagged 12
+ Total Incidents 14
+ Percentage : 85.71428571428571%
+
+../SICP/incident/09Nov19.csv
+ Incidents Tagged 5
+ Total Incidents 5
+ Percentage : 100.0%
+
+../SICP/incident/25Dec19.csv
+ Incidents Tagged 7
+ Total Incidents 10
+ Percentage : 70.0%
+
+../SICP/incident/24Dec19.csv
+ Incidents Tagged 6
+ Total Incidents 8
+ Percentage : 75.0%
+
+../SICP/incident/15Nov19.csv
+ Incidents Tagged 8
+ Total Incidents 10
+ Percentage : 80.0%
+
+../SICP/incident/14Nov19.csv
+ Incidents Tagged 5
+ Total Incidents 8
+ Percentage : 62.5%
+
+../SICP/incident/06Dec19.csv
+ Incidents Tagged 9
+ Total Incidents 12
+ Percentage : 75.0%
+
+../SICP/incident/07Dec19.csv
+ Incidents Tagged 5
+ Total Incidents 6
+ Percentage : 83.33333333333334%
+
+../SICP/incident/21Nov19.csv
+ Incidents Tagged 9
+ Total Incidents 11
+ Percentage : 81.81818181818183%
+
+../SICP/incident/20Nov19.csv
+ Incidents Tagged 10
+ Total Incidents 10
+ Percentage : 100.0%
+
+../SICP/incident/12Nov19.csv
+ Incidents Tagged 6
+ Total Incidents 7
+ Percentage : 85.71428571428571%
+
+../SICP/incident/13Nov19.csv
+ Incidents Tagged 10
+ Total Incidents 15
+ Percentage : 66.66666666666666%
+
+../SICP/incident/01Dec19.csv
+ Incidents Tagged 8
+ Total Incidents 11
+ Percentage : 72.72727272727273%
+
+../SICP/incident/18Nov19.csv
+ Incidents Tagged 10
+ Total Incidents 14
+ Percentage : 71.42857142857143%
+
+../SICP/incident/19Nov19.csv
+ Incidents Tagged 0
+ Total Incidents 10
+ Percentage : 0.0%
+
+../SICP/incident/26Nov19.csv
+ Incidents Tagged 11
+ Total Incidents 11
+ Percentage : 100.0%
+
+../SICP/incident/27Nov19.csv
+ Incidents Tagged 9
+ Total Incidents 11
+ Percentage : 81.81818181818183%
+
+../SICP/incident/05Nov19.csv
+ Incidents Tagged 10
+ Total Incidents 12
+ Percentage : 83.33333333333334%
+
+../SICP/incident/04Nov19.csv
+ Incidents Tagged 11
+ Total Incidents 12
+ Percentage : 91.66666666666666%
+
+../SICP/incident/28Dec19.csv
+ Incidents Tagged 9
+ Total Incidents 11
+ Percentage : 81.81818181818183%
+
+../SICP/incident/29Dec19.csv
+ Incidents Tagged 6
+ Total Incidents 8
+ Percentage : 75.0%
+
+../SICP/incident/16Dec19.csv
+ Incidents Tagged 8
+ Total Incidents 10
+ Percentage : 80.0%
+
+../SICP/incident/17Dec19.csv
+ Incidents Tagged 9
+ Total Incidents 16
+ Percentage : 56.25%
+
+../SICP/incident/22Dec19.csv
+ Incidents Tagged 4
+ Total Incidents 5
+ Percentage : 80.0%
+
+../SICP/incident/23Dec19.csv
+ Incidents Tagged 7
+ Total Incidents 9
+ Percentage : 77.77777777777779%
+
+../SICP/incident/30Nov19.csv
+ Incidents Tagged 9
+ Total Incidents 10
+ Percentage : 90.0%
+
